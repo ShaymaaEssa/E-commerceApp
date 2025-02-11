@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms'
 import { validateHeaderName } from 'http';
+import { AuthService } from '../../core/services/auth/auth.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { RouterLink } from '@angular/router';
+import { Router } from 'express';
 
 @Component({
   selector: 'app-register',
@@ -9,6 +13,13 @@ import { validateHeaderName } from 'http';
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
+
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
+  
+  isLoading:boolean = false;
+  msgError:string='';
+
   registerForm: FormGroup = new FormGroup({
     name: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]), 
     email:new FormControl(null, [Validators.required, Validators.email]),
@@ -17,9 +28,35 @@ export class RegisterComponent {
     phone: new FormControl(null, [Validators.required, Validators.pattern(/^01[0125][0-9]{8}$/)])
   }, this.confirmPassword)
 
+  
+
   submitForm():void{
-    console.log(this.registerForm);
+    if(this.registerForm.valid){
+      this.isLoading = true;
+      
+    
+      this.authService.sendRegisterForm(this.registerForm.value).subscribe({
+        next:(res)=>{
+          console.log(res);
+          this.isLoading = false;
+          if(res.message === 'success'){
+            //navigate login path
+  
+          }
+        },
+        error:(err:HttpErrorResponse)=>{
+          console.log(err);
+          this.isLoading = false;
+          //if message already exist show message to user
+          this.msgError = err.error.message;
+        },
+        
+      });
+    }
+    
   }
+
+  
 
   confirmPassword(group: AbstractControl){
     const password =  group.get('password')?.value;

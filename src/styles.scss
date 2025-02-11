@@ -5,5 +5,5 @@
 
 
 .btn-main{
-    @apply bg-green-600 text-white px-12 py-2 border rounded hover:bg-green-800 transition-all duration-150
+    @apply disabled:bg-gray-600 disabled:text-gray-300 bg-green-600 text-white px-12 py-2 border rounded hover:bg-green-800 transition-all duration-150
 }

@@ -196,6 +196,15 @@
       }
     </div>
 
-    <button class="btn-main" type="submit">Sign Up</button>
+    <button class="btn-main" type="submit" [disabled]="registerForm.invalid || isLoading">Sign Up
+      @if (isLoading) {
+        <span><i class="fas fa-spin fa-spinner"></i></span>
+      }
+    </button>
+
+    @if (msgError) {
+      <p class="bg-red-500 text-white px-2 py-6 border">{{msgError}}</p>
+    }
+    
   </form>
 </section>
