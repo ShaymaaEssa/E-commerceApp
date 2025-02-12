@@ -3,8 +3,9 @@ import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators
 import { validateHeaderName } from 'http';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { RouterLink } from '@angular/router';
-import { Router } from 'express';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-register',
@@ -19,6 +20,7 @@ export class RegisterComponent {
   
   isLoading:boolean = false;
   msgError:string='';
+  success:string = '';
 
   registerForm: FormGroup = new FormGroup({
     name: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]), 
@@ -40,7 +42,15 @@ export class RegisterComponent {
           console.log(res);
           this.isLoading = false;
           if(res.message === 'success'){
-            //navigate login path
+            this.msgError = '';
+            this.success = "Account Created Successfully!";
+
+            alert(this.success);
+            setTimeout(()=>{
+              //navigate login path
+            this.router.navigate(['/login']);
+            }, 1000)
+            
   
           }
         },
@@ -52,6 +62,9 @@ export class RegisterComponent {
         },
         
       });
+    }
+    else {
+      this.registerForm.markAllAsTouched();
     }
     
   }
