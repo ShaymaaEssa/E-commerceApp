@@ -1,1 +1,79 @@
-<p>home works!</p>
+<section>
+    <div class="grid md:grid-cols-[70%_minmax(0,1fr)]">
+        <div>
+            
+            <owl-carousel-o [options]="customMainSlider">
+                <ng-template carouselSlide><img src="/images/img1.avif" alt="slider image 1" class="w-full h-[300px] "></ng-template>
+                <ng-template carouselSlide><img src="/images/img2.avif" alt="slider image 1" class="w-full h-[300px] "></ng-template>
+
+                <ng-template carouselSlide><img src="/images/img3.avif" alt="slider image 1" class="w-full h-[300px] "></ng-template>
+                <ng-template carouselSlide><img src="/images/img4.avif" alt="slider image 1" class="w-full h-[300px] "></ng-template>
+                <ng-template carouselSlide><img src="/images/img5.avif" alt="slider image 1" class="w-full h-[300px] "></ng-template>
+                <ng-template carouselSlide><img src="/images/img6.avif" alt="slider image 1" class="w-full h-[300px] "></ng-template>
+
+              </owl-carousel-o>
+        </div>
+
+        <div>
+            <img src="/images/grocery-banner.png" alt="slider image 2" class="w-full h-[150px] object-contain">
+            <img src="/images/grocery-banner-2.jpeg" alt="slider image 3" class="w-full h-[150px] object-contain">
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2 class="text-3xl py-4 capitalize">Popular Categories</h2>
+
+    <owl-carousel-o [options]="customOptions">
+  
+      
+        @for (cat of categories; track cat._id) {
+            <ng-template carouselSlide >
+                <!-- content for one slide -->
+                 <div>
+                  <img [src]="cat.image" [alt]="cat.name" class="h-[250px] object-contain">
+                 </div>
+                 <h3 class="text-green-600 text-center">{{cat.name}}</h3>
+              </ng-template>
+        }
+
+   
+  
+    </owl-carousel-o>
+    
+</section>
+
+<section>
+
+    <h2 class="text-3xl py-4 capitalize">Popular products</h2>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+        @for (product of products.slice(0,12); track product._id) {
+            <div class="card border border-green-400/50 rounded-md overflow-hidden shadow relative group">
+                <div class="card-img">
+                    <img [src]="product.imageCover" [alt]="product.title" class="w-full object-contain h-[250px]">
+    
+                </div>
+
+                <div class="card-body px-2 py-4">
+                    <h4 class="text-green-500 text-xs">{{product.category.name}}</h4>
+                    <h3 class="font-medium">{{product.title.split(' ', 2).join(' ')}}</h3>
+                    <div class="flex justify-between items-center">
+                        <span>{{product.price}}</span>
+                        <div class="flex items-center">
+                            <!-- @for (item of [].constructor(product.ratingsAverage); track item) {
+                                <i class="fas fa-star text-yellow-300"></i>
+                            } -->
+                            
+                            <span class="text-gray-500">{{product.ratingsAverage}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-main w-[90%] mx-auto block translate-y-full opacity-0 group-hover:-translate-y-0 group-hover:transition-all group-hover:duration-500 group-hover:opacity-100">Add to cart</button>
+                
+            </div>
+        }
+
+    </div>
+</section>
