@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
+import { authGuard } from './core/guards/auth.guard';
+import { loggedGuard } from './core/guards/logged.guard';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -9,6 +11,7 @@ export const routes: Routes = [
     {
         path: '',
         component: AuthLayoutComponent,
+        canActivate:[loggedGuard],
         children: [
             { 
                 path: 'login', 
@@ -19,13 +22,19 @@ export const routes: Routes = [
                 path: 'register', 
                 loadComponent: () => import('./pages/register/register.component').then(m => m.RegisterComponent), 
                 title: 'register' 
+            },
+            { 
+                path: 'forget', 
+                loadComponent: () => import('./pages/forgetpassword/forgetpassword.component').then(m => m.ForgetpasswordComponent), 
+                title: 'Forget Password' 
             }
         ]
     },
 
     {
         path: '',
-        component: BlankLayoutComponent,
+        component: BlankLayoutComponent, 
+        canActivate:[authGuard],
         children: [
             { 
                 path: 'home', 
@@ -56,6 +65,11 @@ export const routes: Routes = [
                 path: 'checkout', 
                 loadComponent: () => import('./pages/checkout/checkout.component').then(m => m.CheckoutComponent), 
                 title: 'checkout' 
+            },
+            {
+                path:'details/:productId', 
+                loadComponent: () => import('./pages/details/details.component').then(m => m.DetailsComponent), 
+                title:'Product Details'
             }
         ]
     },

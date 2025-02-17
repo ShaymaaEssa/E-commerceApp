@@ -2,11 +2,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from './../../core/services/auth/auth.service';
 import { Component, inject } from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms'
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -37,7 +37,13 @@ export class LoginComponent {
 
             alert(this.success);
             setTimeout(()=>{
-              //navigate login path
+              
+              //1. save token
+              localStorage.setItem('userToken', res.token);
+              
+              //2. decode token
+              this.authService.saveUserData();
+              //3.navigate login path
             this.router.navigate(['/home']);
             }, 1000)
             

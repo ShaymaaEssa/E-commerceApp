@@ -1,4 +1,5 @@
-import { Component, Input, input } from '@angular/core';
+import { AuthService } from './../../core/services/auth/auth.service';
+import { Component, Input, input, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
@@ -10,4 +11,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 export class NavbarComponent {
 
   isLogin = input<boolean>(true);
+  private readonly authService = inject(AuthService);
+
+  logOut(){
+    this.authService.logOut();
+  }
 }

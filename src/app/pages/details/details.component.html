@@ -1,1 +1,55 @@
-<p>details works!</p>
+@if (detailsProduct._id) {
+    <section>
+        <div class="grid grid-cols-[30%__minmax(0,1fr)] justify-center items-center">
+            <div class="img">
+                
+
+                <!-- <img [src]="detailsProduct.imageCover" [alt]="detailsProduct.title" class="w-full"> -->
+                
+                <!-- loop on image -->
+                <owl-carousel-o [options]="customOptions">
+
+                    @for (img of detailsProduct.images; track $index) {
+                        <ng-template carouselSlide >
+                            <!-- content for one slide -->
+                             <div>
+                              <img [src]="img" [alt]="detailsProduct.title" class="h-[250px] object-contain">
+                             </div>
+                            
+                          </ng-template>
+                    }
+                
+                  </owl-carousel-o>
+            
+            </div>
+    
+            <div>
+                <h4 class="text-2xl text-black">{{detailsProduct.title}}</h4>
+                <p class="capitalize text-gray-600 ps-5 py-10">{{detailsProduct.description}}</p>
+                <p class="text-black">{{detailsProduct.category.name}}</p>
+    
+                <div class="flex justify-between items-center">
+                    <span>{{detailsProduct.price}}</span>
+                    <div class="flex items-center">
+                        @for (num of [1,2,3,4,5].slice(0,detailsProduct.ratingsAverage) ; track $index) {
+                            <i class="fas fa-star text-yellow-300"></i>
+                        }
+                        
+                        @if(detailsProduct.ratingsAverage % 1 !== 0){
+                            <i class="fas fa-star fa-star-half-stroke text-yellow-300"></i>
+    
+                        }
+                        
+                        <span class="text-gray-500">{{detailsProduct.ratingsAverage}}</span>
+                    </div>
+                </div>
+    
+                <button (click)="addCartItem(detailsProduct._id)" class="btn-main w-full  mx-auto block ">+ Add to cart</button>
+    
+            
+            
+            </div>
+        </div>
+    </section>
+}
+
