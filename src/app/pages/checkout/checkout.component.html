@@ -1,1 +1,179 @@
-<p>checkout works!</p>
+<section class="bg-gray-50 rounded shadow border p-4 w-[50%] mx-auto">
+  <h1 class="text-center text-green-600 text-3xl">CheckOut</h1>
+
+  <form action="" [formGroup]="checkOutForm" (ngSubmit)="onlineSubmitForm()">
+    <div class="mb-5">
+      @let detailsControl = checkOutForm.get('details');
+      <label
+        for="details"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Details</label
+      >
+      <textarea
+        formControlName="details"
+        id="details"
+        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      ></textarea>
+
+      @if (detailsControl?.errors && detailsControl?.touched) {
+      <div
+        class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3 mt-[2px]"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Danger</span>
+        <div>
+          <ul class="mt-1.5 list-disc list-inside">
+            @if(detailsControl?.getError('required')){
+            <li>Details is required</li>
+            }
+          </ul>
+        </div>
+      </div>
+
+      }
+    </div>
+
+    <div class="mb-5">
+      @let phoneControl = checkOutForm.get('phone');
+      <label
+        for="phone"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >phone</label
+      >
+      <input
+        formControlName="phone"
+        type="tel"
+        id="phone"
+        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      />
+
+      @if (phoneControl?.errors && phoneControl?.touched) {
+      <div
+        class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3 mt-[2px]"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Danger</span>
+        <div>
+          <ul class="mt-1.5 list-disc list-inside">
+            @if(phoneControl?.getError('required')){
+            <li>phone is required</li>
+            } @else if (phoneControl?.getError('pattern')) {
+            <li>phone is not valid</li>
+            }
+          </ul>
+        </div>
+      </div>
+
+      }
+    </div>
+
+    <div class="mb-5">
+      @let cityControl = checkOutForm.get('city');
+      <label
+        for="city"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >city</label
+      >
+      <input
+        formControlName="city"
+        type="text"
+        id="city"
+        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      />
+
+      @if (cityControl?.errors && cityControl?.touched) {
+      <div
+        class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3 mt-[2px]"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Danger</span>
+        <div>
+          <ul class="mt-1.5 list-disc list-inside">
+            @if(cityControl?.getError('required')){
+            <li>city is required</li>
+            }
+          </ul>
+        </div>
+      </div>
+
+      }
+    </div>
+
+    <div class="radio flex justify-around mb-11">
+      <div
+        class="flex items-center px-4 border border-gray-200 rounded-2xl dark:border-gray-700"
+      >
+        <input
+          checked
+          formControlName="paymentMethod"
+          id="bordered-radio-1"
+          type="radio"
+          value=""
+          name="bordered-radio"
+          class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+        />
+        <label
+          for="bordered-radio-1"
+          class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+          >Online Payment</label
+        >
+      </div>
+      <div
+        class="flex items-center px-6 border border-gray-200 rounded-2xl dark:border-gray-700"
+      >
+        <input
+        formControlName="paymentMethod"
+          id="bordered-radio-2"
+          type="radio"
+          value=""
+          name="bordered-radio"
+          class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+        />
+        <label
+          for="bordered-radio-2"
+          class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+          >Cash Payment</label
+        >
+      </div>
+    </div>
+    <div class="buttons flex justify-center items-center">
+      <button class="btn-main w-full" type="submit" [disabled]="checkOutForm.invalid">
+        Continue Your Payment
+      </button>
+
+    </div>
+  </form>
+</section>

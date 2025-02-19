@@ -1,0 +1,34 @@
+<section class="bg-gray-50 rounded shadow border p-4 w-[75%] mx-auto">
+    <h1 class="text-center text-3xl text-green-600">All Orders</h1>
+
+    @for (order of allOrdersArr; track order.id) {
+
+        <div class="grid md:grid-cols-[70%_minmax(0,1fr)] border-b mb-4 pb-4">
+            <div class="items">
+                @for (item of order.cartItems; track item._id) {
+
+                    <div class="grid md:grid-cols-[10%_minmax(0,1fr)] border-b mb-4 pb-4">
+                        <div class="img">
+                            <img [src]="item.product.imageCover" [alt]="item.product.title" class="w-full object-contain">
+                        </div>
+
+                        <div class="item-info ms-4">
+                            <h3 class="text-gray-600 text-xl ">{{item.product.title}}</h3>
+                            <p class="text-green-600 ">{{item.price | currency:'EGP' }}</p>
+                            <p>QTY: <span class="text-green-600">{{item.count}}</span></p>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="ship-detail text-center">
+                <h5 class="text-black border-b border-b-green-700 text-center font-semibold text-2xl mb-4 pb-2">Order Detail</h5>
+                <p>Oder ID: <span class="text-green-600">{{order.id}}</span> </p>
+                <p>Payment Method: <span class="text-green-600">{{order.paymentMethodType}}</span></p>
+                <p>Address: <span class="text-green-600">{{order.shippingAddress.city}}</span></p>
+                <p>Phone: <span class="text-green-600">{{order.user.phone}}</span></p>
+                <p>Total Order Price: <span class="text-green-600">{{order.totalOrderPrice}}</span></p>
+            </div>
+        </div>
+    }
+</section>
