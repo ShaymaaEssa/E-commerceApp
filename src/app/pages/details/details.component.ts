@@ -3,6 +3,8 @@ import {ActivatedRoute} from '@angular/router'
 import { ProductsService } from '../../core/services/products/products.service';
 import { IProduct } from '../../shared/interfaces/iproduct';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
+import { CartService } from '../../core/services/cart/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-details',
@@ -13,7 +15,9 @@ import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 export class DetailsComponent implements OnInit{
 
   private readonly activatedRoute = inject(ActivatedRoute)
-  private readonly productsService = inject(ProductsService)
+  private readonly productsService = inject(ProductsService);
+  private readonly cartService = inject(CartService);
+  private readonly toasterAlert = inject(ToastrService);
 
   detailsProduct : IProduct = {} as IProduct;
 
@@ -62,7 +66,18 @@ export class DetailsComponent implements OnInit{
     })
   }
 
-  addCartItem(id:string){
+  addCartItem(id:string):void{
+    this.cartService.addProductToCart(id).subscribe({
+      next:(res)=>{
+        console.log(res);
+        if(res.status === 'success'){
+          this.toasterAlert.success(res.message, 'FreshCart');
+        }
 
+      },
+      error:(err)=>{
+        console.log(err);
+      }
+    })
   }
 }

@@ -5,7 +5,7 @@
         <h1 class="text-3xl text-gray-500 text-center"><span><i class="fas fa-spin fa-spinner"></i></span> Loading... </h1>
     }
 
-    @else if (cartDetails._id ) {
+    @else if (cartDetails.products.length ) {
         <div class="flex justify-between items-center mb-4">
             <span>Total Cart Price : {{cartDetails.totalCartPrice | currency:'EGP'}}</span>
             <button class="text-white px-6 py-2 border rounded hover:bg-red-600 transition-all duration-150 bg-red-400" (click)="clearCart()"><i class="fa-solid fa-trash"></i> Clear Cart</button>
