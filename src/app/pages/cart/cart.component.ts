@@ -15,6 +15,7 @@ export class CartComponent implements OnInit{
   private readonly cartService = inject(CartService);
 
   cartDetails:ICart = {} as ICart;
+  isLoading:boolean =  false;
 
 
   ngOnInit(): void {
@@ -22,13 +23,16 @@ export class CartComponent implements OnInit{
   }
 
   getCartData(){
+    this.isLoading = true;
     this.cartService.getLoggeddUserCart().subscribe({
       next:(res)=>{
-        console.log(res.data)
+        console.log(res.data);
+        this.isLoading = false;
         this.cartDetails = res.data;
       }, 
       error:(err)=>{
         console.log(err);
+        this.isLoading = false;
       }
     })
   }
@@ -54,6 +58,20 @@ export class CartComponent implements OnInit{
         console.log(res)
         this.cartDetails = res.data;
       },
+      error:(err)=>{
+        console.log(err);
+      }
+    })
+  }
+
+  clearCart(){
+    this.cartService.clearUserCart().subscribe({
+      next:(res)=>{
+        console.log(res);
+        if(res.message ==='success'){
+          this.cartDetails = {} as ICart;
+        }
+      }, 
       error:(err)=>{
         console.log(err);
       }

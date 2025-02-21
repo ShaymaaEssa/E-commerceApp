@@ -10,6 +10,7 @@ import { RouterLink } from '@angular/router';
 import { TermtextPipe } from '../../shared/pipes/termtext.pipe';
 import { SearchPipe } from '../../shared/pipes/search.pipe';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class HomeComponent {
   private readonly productsService=inject(ProductsService);
   private readonly categoriesService = inject(CategoriesService);
   private readonly cartService = inject(CartService);
+  private readonly toasterAlert = inject(ToastrService);
 
   private readonly ID = inject( PLATFORM_ID) ;
   
@@ -89,6 +91,7 @@ export class HomeComponent {
         console.log('here');
         console.log(res.data);
         this.products = res.data;
+        
       },
       error:(err)=>{
         console.log(err.message)
@@ -113,6 +116,10 @@ export class HomeComponent {
     this.cartService.addProductToCart(id).subscribe({
       next:(res)=>{
         console.log(res);
+        if(res.status === 'success'){
+          this.toasterAlert.success(res.message, 'FreshCart');
+        }
+
       },
       error:(err)=>{
         console.log(err);

@@ -61,4 +61,14 @@ export class CartService {
       }
     )
   }
+
+  clearUserCart():Observable<any>{
+    return this.httpClient.delete(`${environment.baseURL}/api/v1/cart`, 
+      {
+        headers:{
+          token: this.myToken
+        }
+      }
+    )
+  }
 }

@@ -30,6 +30,18 @@ export class OrdersService {
     )
   }
 
+  cashPayment(id:string, data:object):Observable<any>{
+    return this.httpClient.post(`${environment.baseURL}/api/v1/orders/${id}`,
+      {
+        "shippingAddress": data
+      }, 
+      {
+        headers:{
+          token:this.myToken
+        }
+      })
+  }
+
   getUsersOrders():Observable<any>{
     if(localStorage.getItem('userToken') !== null){
           this.userData =  jwtDecode(localStorage.getItem('userToken')!)

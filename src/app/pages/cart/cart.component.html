@@ -1,32 +1,46 @@
 <section class="bg-gray-50 rounded shadow border p-4 w-[75%] mx-auto">
-    <h1 class="text-center text-3xl text-green-600">Shop Cart</h1>
-    <span>Total Cart Price : {{cartDetails.totalCartPrice | currency:'EGP'}}</span>
+    <h1 class="text-center text-3xl text-green-600 mb-4">Shop Cart</h1>
 
-    @for (product of cartDetails.products; track product.product._id) {
-
-        <div class="grid md:grid-cols-[10%_minmax(0,1fr)] border-b mb-4 pb-4">
-
-            <div class="img">
-                <img [src]="product.product.imageCover" [alt]="product.product.title" class="w-full h-[100px] object-contain">
-            </div>
-    
-            <div class="info flex  justify-between items-center">
-                <div>
-                    <h3>{{product.product.title}}</h3>
-                    <h4>Price : {{product.price | currency:'EGP'}}</h4>
-                    <button (click)="removeItem(product.product.id)"> <i class="fas fa-trash-can text-green-600"></i>Remove</button>
-                </div>
-    
-                <div class="flex items-center justify-center gap-6">
-                    <button (click)="updateCartQuantity(product.product._id, product.count+1)" class="text-green-600 text-3xl"><i class="fa-regular fa-square-plus"></i></button>
-                    <span>{{product.count}}</span>
-                    <button (click)="updateCartQuantity(product.product._id, product.count-1)" class="text-green-600 text-3xl"><i class="fa-regular fa-square-minus"></i></button>
-                </div>
-            </div>
-        </div> 
-
+    @if(isLoading){
+        <h1 class="text-3xl text-gray-500 text-center"><span><i class="fas fa-spin fa-spinner"></i></span> Loading... </h1>
     }
 
-    <button class="btn-main" [routerLink]="['/checkout', cartDetails._id]">CheckOUT</button>
+    @else if (cartDetails._id ) {
+        <div class="flex justify-between items-center mb-4">
+            <span>Total Cart Price : {{cartDetails.totalCartPrice | currency:'EGP'}}</span>
+            <button class="text-white px-6 py-2 border rounded hover:bg-red-600 transition-all duration-150 bg-red-400" (click)="clearCart()"><i class="fa-solid fa-trash"></i> Clear Cart</button>
+        </div>
+        
+
+        @for (product of cartDetails.products; track product.product._id) {
+    
+            <div class="grid md:grid-cols-[10%_minmax(0,1fr)] border-b mb-4 pb-4">
+    
+                <div class="img">
+                    <img [src]="product.product.imageCover" [alt]="product.product.title" class="w-full h-[100px] object-contain">
+                </div>
+        
+                <div class="info flex  justify-between items-center">
+                    <div>
+                        <h3>{{product.product.title}}</h3>
+                        <h4>Price : {{product.price | currency:'EGP'}}</h4>
+                        <button (click)="removeItem(product.product.id)"> <i class="fas fa-trash-can text-green-600"></i>Remove</button>
+                    </div>
+        
+                    <div class="flex items-center justify-center gap-6">
+                        <button (click)="updateCartQuantity(product.product._id, product.count+1)" class="text-green-600 text-3xl"><i class="fa-regular fa-square-plus"></i></button>
+                        <span>{{product.count}}</span>
+                        <button (click)="updateCartQuantity(product.product._id, product.count-1)" class="text-green-600 text-3xl"><i class="fa-regular fa-square-minus"></i></button>
+                    </div>
+                </div>
+            </div> 
+    
+        }
+    
+        <button class="btn-main w-full" [routerLink]="['/checkout', cartDetails._id]">CheckOUT</button>
+    } @else{
+        <h4 class="text-red-500 text-xl">Sorry! No Products in your cart.</h4>
+    }
+
 
 </section>

@@ -1,7 +1,7 @@
 import { OrdersService } from './../../core/services/orders/orders.service';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -14,6 +14,7 @@ export class CheckoutComponent implements OnInit {
   private readonly formBuilder = inject(FormBuilder);
   private readonly activatedRoute = inject(ActivatedRoute);
   private readonly ordersService = inject(OrdersService);
+  private readonly router = inject(Router);
 
   checkOutForm !: FormGroup;
   cartId:string = "";
@@ -47,18 +48,36 @@ export class CheckoutComponent implements OnInit {
  }
 
  onlineSubmitForm(){
-  console.log(this.checkOutForm.value.paymentMethod);
+  console.log(`Selected payment method: ${this.checkOutForm.value.paymentMethod}`);
   console.log(`cartId = ${this.cartId}`);
-  this.ordersService.checkoutPayMent(this.cartId, this.checkOutForm.value).subscribe({
-    next:(res)=>{
-      console.log(res);
-      if(res.status ==='success'){
-        open(res.session.url, '_self');
+
+  if(this.checkOutForm.value.paymentMethod == 'online'){
+    this.ordersService.checkoutPayMent(this.cartId, this.checkOutForm.value).subscribe({
+      next:(res)=>{
+        console.log(res);
+        if(res.status ==='success'){
+          open(res.session.url, '_self');
+        }
+      }, 
+      error:(err)=>{
+        console.log(err);
       }
-    }, 
-    error:(err)=>{
-      console.log(err);
-    }
-  })
+    })
+  } else{
+    this.ordersService.cashPayment(this.cartId, this.checkOutForm.value).subscribe({
+      next:(res)=>{
+        console.log(res);
+        if(res.status === 'success'){
+          alert('Your payment set to cash successfully!')
+          this.router.navigate(['/allorders']);
+        }
+        
+      }, 
+      error:(err)=>{
+        console.log(err);
+      }
+    })
+  }
+  
  }
 }
