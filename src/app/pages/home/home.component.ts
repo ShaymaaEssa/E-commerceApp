@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
 
+
 @Component({
   selector: 'app-home',
   imports: [CarouselModule, RouterLink, TitleCasePipe, SlicePipe, CurrencyPipe, TermtextPipe, SearchPipe, FormsModule],
@@ -25,6 +26,7 @@ export class HomeComponent {
   private readonly categoriesService = inject(CategoriesService);
   private readonly cartService = inject(CartService);
   private readonly toasterAlert = inject(ToastrService);
+  
 
   private readonly ID = inject( PLATFORM_ID) ;
   
@@ -91,6 +93,7 @@ export class HomeComponent {
         console.log('here');
         console.log(res.data);
         this.products = res.data;
+
         
       },
       error:(err)=>{

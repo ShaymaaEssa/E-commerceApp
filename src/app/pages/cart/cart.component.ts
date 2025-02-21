@@ -1,13 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CartService } from '../../core/services/cart/cart.service';
 import { ICart } from '../../shared/interfaces/icart';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, JsonPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cart',
-  imports: [CurrencyPipe, RouterLink],
+  imports: [CurrencyPipe, RouterLink, JsonPipe],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
@@ -16,7 +16,7 @@ export class CartComponent implements OnInit{
   private readonly cartService = inject(CartService);
 
   cartDetails:ICart = {} as ICart;
-  isLoading:boolean =  false;
+ 
 
 
   ngOnInit(): void {
@@ -24,16 +24,14 @@ export class CartComponent implements OnInit{
   }
 
   getCartData(){
-    this.isLoading = true;
+
     this.cartService.getLoggeddUserCart().subscribe({
       next:(res)=>{
         console.log(res.data);
-        this.isLoading = false;
         this.cartDetails = res.data;
       }, 
       error:(err)=>{
         console.log(err);
-        this.isLoading = false;
       }
     })
   }
@@ -109,6 +107,7 @@ export class CartComponent implements OnInit{
             console.log(res);
             if(res.message ==='success'){
               this.cartDetails = {} as ICart;
+              console.log(this.cartDetails);
               Swal.fire({
                 title: "Deleted!",
                 text: "Your cart is cleared.",

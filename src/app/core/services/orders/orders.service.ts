@@ -11,7 +11,6 @@ import { jwtDecode } from 'jwt-decode';
 })
 export class OrdersService {
 
-  myToken:any = localStorage.getItem('userToken');
   userData: IUser ={} as IUser;
 
   constructor(private httpClient : HttpClient) { }
@@ -21,11 +20,6 @@ export class OrdersService {
     return this.httpClient.post(`${environment.baseURL}/api/v1/orders/checkout-session/${id}?url=http://localhost:4200`,
       {
         "shippingAddress": data
-      }, 
-      {
-        headers:{
-          token:this.myToken
-        }
       }
     )
   }
@@ -34,11 +28,6 @@ export class OrdersService {
     return this.httpClient.post(`${environment.baseURL}/api/v1/orders/${id}`,
       {
         "shippingAddress": data
-      }, 
-      {
-        headers:{
-          token:this.myToken
-        }
       })
   }
 

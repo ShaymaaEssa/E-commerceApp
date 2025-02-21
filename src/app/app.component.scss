@@ -1,0 +1,19 @@
+.cart-spinner {
+    font-size: 80px;
+    color: lightgray;
+    /*Startwithgray*/animation: changeColor 1s ease-in-out forwards, bounceCart 1s infinite alternate;
+    -webkit-animation: changeColor 1s ease-in-out forwards, bounceCart 1s infinite alternate;
+}
+  
+  /* Transition from gray to green */
+  @keyframes changeColor {
+    0% { color: lightgray; }
+    100% { color: lightgreen; }
+  }
+  
+  /* Bouncing animation (optional) */
+  @keyframes bounceCart {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+  }
+  

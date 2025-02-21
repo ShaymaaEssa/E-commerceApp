@@ -9,7 +9,7 @@ import { environment } from '../../environment/environment';
 })
 export class CartService {
 
-  myToken:any = localStorage.getItem('userToken');
+  
 
   constructor(private httpClient : HttpClient) { }
 
@@ -17,34 +17,18 @@ export class CartService {
     return this.httpClient.post(`${environment.baseURL}/api/v1/cart`, 
       {
         "productId": id
-    }, 
-
-    {
-      headers:{
-        token: this.myToken
-      }
     }
 
     )
   }
 
   getLoggeddUserCart():Observable<any>{
-    return this.httpClient.get(`${environment.baseURL}/api/v1/cart`,
-      {
-        headers:{
-          token: this.myToken
-        }
-      }
+    return this.httpClient.get(`${environment.baseURL}/api/v1/cart`
     )
   }
 
   removeCartItem(id:string):Observable<any>{
-    return this.httpClient.delete(`${environment.baseURL}/api/v1/cart/${id}`, 
-      {
-        headers:{
-          token:this.myToken
-        }
-      }
+    return this.httpClient.delete(`${environment.baseURL}/api/v1/cart/${id}`
      )
   }
 
@@ -53,22 +37,12 @@ export class CartService {
       {
         "count":newCount
       }
-      , 
-      {
-        headers:{
-          token: this.myToken
-        }
-      }
+      
     )
   }
 
   clearUserCart():Observable<any>{
-    return this.httpClient.delete(`${environment.baseURL}/api/v1/cart`, 
-      {
-        headers:{
-          token: this.myToken
-        }
-      }
+    return this.httpClient.delete(`${environment.baseURL}/api/v1/cart`
     )
   }
 }

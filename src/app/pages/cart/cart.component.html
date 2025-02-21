@@ -1,11 +1,7 @@
 <section class="bg-gray-50 rounded shadow border p-4 w-[75%] mx-auto">
     <h1 class="text-center text-3xl text-green-600 mb-4">Shop Cart</h1>
 
-    @if(isLoading){
-        <h1 class="text-3xl text-gray-500 text-center"><span><i class="fas fa-spin fa-spinner"></i></span> Loading... </h1>
-    }
-
-    @else if (cartDetails.products.length ) {
+    @if ((cartDetails | json) !== '{}' && cartDetails.products.length ) {
         <div class="flex justify-between items-center mb-4">
             <span>Total Cart Price : {{cartDetails.totalCartPrice | currency:'EGP'}}</span>
             <button class="text-white px-6 py-2 border rounded hover:bg-red-600 transition-all duration-150 bg-red-400" (click)="clearCart()"><i class="fa-solid fa-trash"></i> Clear Cart</button>
