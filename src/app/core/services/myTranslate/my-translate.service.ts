@@ -48,4 +48,16 @@ export class MyTranslateService {
 
 
    }
+
+
+   changeLangTranslate(lang:string):void{
+      //save to local storate
+      localStorage.setItem('lang', lang);
+
+      //use lang 
+      this.translateService.use(  lang  );
+      
+      // change direction
+      this.changeDirection();
+   }
 }

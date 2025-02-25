@@ -47,7 +47,8 @@ export class HomeComponent {
     navSpeed: 700,
     navText: ['', ''],
     items:1,
-    nav: false
+    nav: false,
+    rtl:true
   }
   customOptions: OwlOptions = {
     loop: true,
@@ -74,7 +75,8 @@ export class HomeComponent {
         items: 4
       }
     },
-    nav: true
+    nav: true, 
+    rtl:true
   }
 
   ngOnInit(): void {
