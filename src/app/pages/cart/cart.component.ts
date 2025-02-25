@@ -52,7 +52,7 @@ export class CartComponent implements OnInit{
             console.log(res);
             if(res.status ==='success'){
               this.cartDetails = res.data;
-              this.cartService.numCartItem.next(res.numOfCartItems);
+              this.cartService.numCartItem.set(res.numOfCartItems);
               console.log(`cart details: ${this.cartDetails._id}`);
               Swal.fire({
                 title: "Deleted!",
@@ -108,7 +108,7 @@ export class CartComponent implements OnInit{
             console.log(res);
             if(res.message ==='success'){
               this.cartDetails = {} as ICart;
-              this.cartService.numCartItem.next(0);
+              this.cartService.numCartItem.set(0);
 
               console.log(this.cartDetails);
               Swal.fire({

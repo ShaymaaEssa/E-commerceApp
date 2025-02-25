@@ -123,7 +123,7 @@ export class HomeComponent {
         console.log(res);
         if(res.status === 'success'){
           this.toasterAlert.success(res.message, 'FreshCart');
-          this.cartService.numCartItem.next(res.numOfCartItems) ;
+          this.cartService.numCartItem.set(res.numOfCartItems) ;
           console.log(`home cart item = ${res.numOfCartItems}`);
         }
 

@@ -1,5 +1,5 @@
 import { AuthService } from './../../core/services/auth/auth.service';
-import { Component, Input, input, inject, DoCheck, OnInit } from '@angular/core';
+import { Component, Input, input, inject, DoCheck, OnInit, computed, signal, Signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { initFlowbite } from 'flowbite';
@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
   private readonly authService = inject(AuthService);
 
   isLogin = input<boolean>(true);
-  cartCount:number = 0;
+  cartCount:Signal<number> = computed(()=> this.cartService.numCartItem());
 
 
   private initialized = false; // Prevent multiple initializations
@@ -28,17 +28,9 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.cartService.getLoggeddUserCart().subscribe({
       next:(res)=>{
-        this.cartService.numCartItem.next(res.numOfCartItems) ;
+        this.cartService.numCartItem.set(res.numOfCartItems) ;
       }
     });
-
-
-    this.cartService.numCartItem.subscribe({
-      next:(data)=>{
-        this.cartCount = data;
-      }
-    });
-
     
     console.log(`navbar cart item = ${this.cartCount}`);
   }
