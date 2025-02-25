@@ -1,9 +1,10 @@
 import { AuthService } from './../../core/services/auth/auth.service';
-import { Component, Input, input, inject } from '@angular/core';
+import { Component, Input, input, inject, DoCheck, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { initFlowbite } from 'flowbite';
 import { MyTranslateService } from '../../core/services/myTranslate/my-translate.service';
+import { CartService } from '../../core/services/cart/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,17 +12,46 @@ import { MyTranslateService } from '../../core/services/myTranslate/my-translate
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
+
 
   private readonly myTranslateService = inject(MyTranslateService);
-
-  isLogin = input<boolean>(true);
+  private readonly  cartService= inject(CartService);
   private readonly authService = inject(AuthService);
 
-  ngAfterViewInit() {
-    initFlowbite();
-  }
+  isLogin = input<boolean>(true);
+  cartCount:number = 0;
 
+
+  private initialized = false; // Prevent multiple initializations
+
+  ngOnInit(): void {
+    this.cartService.getLoggeddUserCart().subscribe({
+      next:(res)=>{
+        this.cartService.numCartItem.next(res.numOfCartItems) ;
+      }
+    });
+
+
+    this.cartService.numCartItem.subscribe({
+      next:(data)=>{
+        this.cartCount = data;
+      }
+    });
+
+    
+    console.log(`navbar cart item = ${this.cartCount}`);
+  }
+  
+  ngAfterViewChecked() {
+    if (!this.initialized) {
+      this.initialized = true;
+      setTimeout(() => {
+        initFlowbite();
+      }, 0);
+    }
+  }
+  
   logOut(){
     this.authService.logOut();
   }
