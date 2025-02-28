@@ -1,1 +1,44 @@
-<p>products works!</p>
+<section>
+    <h1 class="text-green-600 text-3xl text-center font-bold mb-5">Products</h1>
+    
+    <input [(ngModel)]="searchText" type="search" placeholder="Search by Name ..." class="form-control w-[50%] mx-auto my-4 block">
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+        @for (product of products()|search : searchText; track product._id) {
+            <div class="card border border-green-400/50 rounded-md overflow-hidden shadow relative group" >
+                <div [routerLink]="['/details', product._id]">
+                    <div class="card-img">
+                        <img [src]="product.imageCover" [alt]="product.title" class="w-full object-contain h-[250px]">
+        
+                    </div>
+    
+                    <div class="card-body px-2 py-4">
+                        <h4 class="text-green-500 text-xs">{{product.category.name | titlecase | slice:0:5 }}</h4>
+                        <h3 class="font-medium">{{product.title | termtext:2 }}</h3>
+                        <div class="flex justify-between items-center">
+                            <span>{{product.price| currency:'EGP' }}</span>
+                            <div class="flex items-center">
+                                @for (num of [1,2,3,4,5].slice(0,product.ratingsAverage) ; track $index) {
+                                    <i class="fas fa-star text-yellow-300"></i>
+                                }
+                                
+                                @if(product.ratingsAverage % 1 !== 0){
+                                    <i class="fas fa-star fa-star-half-stroke text-yellow-300"></i>
+
+                                }
+                                <span class="text-gray-500">{{product.ratingsAverage}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <button (click)="addCartItem(product._id)" class="btn-main w-[90%] mx-auto block translate-y-full opacity-0 group-hover:-translate-y-0 group-hover:transition-all group-hover:duration-500 group-hover:opacity-100">Add to cart</button>
+                
+            </div>
+        }
+
+    </div>
+
+
+</section>

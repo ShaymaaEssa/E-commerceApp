@@ -29,7 +29,7 @@
                 <p class="text-black">{{detailsProduct.category.name}}</p>
     
                 <div class="flex justify-between items-center">
-                    <span>{{detailsProduct.price}}</span>
+                    <span>{{detailsProduct.price | currency : 'EGP'}}</span>
                     <div class="flex items-center">
                         @for (num of [1,2,3,4,5].slice(0,detailsProduct.ratingsAverage) ; track $index) {
                             <i class="fas fa-star text-yellow-300"></i>
@@ -44,7 +44,7 @@
                     </div>
                 </div>
     
-                <button (click)="addCartItem(detailsProduct._id)" class="btn-main w-full  mx-auto block ">+ Add to cart</button>
+                <button (click)="addCartItem(detailsProduct._id)" class="btn-main my-5 w-full  mx-auto block ">+ Add to cart</button>
     
             
             

@@ -5,10 +5,11 @@ import { IProduct } from '../../shared/interfaces/iproduct';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { CartService } from '../../core/services/cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-details',
-  imports: [CarouselModule],
+  imports: [CarouselModule, CurrencyPipe],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss'
 })

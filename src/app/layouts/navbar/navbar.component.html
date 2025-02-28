@@ -43,8 +43,8 @@
         <li>
           <a
             routerLink="/home"
-            routerLinkActive="bg-red-400 text-white"
-            class="block py-2 px-3 text-gray-700 rounded-sm"
+            routerLinkActive="bg-green-600 rounded text-white"
+            class="block py-2 px-3 text-gray-700 rounded-lg "
             aria-current="page"
           >
             {{ "navbar.home" | translate }}
@@ -54,8 +54,8 @@
         <li>
           <a
             routerLink="/products"
-            routerLinkActive="bg-red-400 text-white"
-            class="block py-2 px-3 text-gray-700 rounded-sm"
+            routerLinkActive="bg-green-600 rounded text-white"
+            class="block py-2 px-3 text-gray-700 rounded-lg "
             aria-current="page"
           >
             {{ "navbar.Products" | translate }}
@@ -65,8 +65,8 @@
         <li>
           <a
             routerLink="/categories"
-            routerLinkActive="bg-red-400 text-white"
-            class="block py-2 px-3 text-gray-700 rounded-sm"
+            routerLinkActive="bg-green-600  text-white"
+            class="block py-2 px-3 text-gray-700 rounded-lg"
             aria-current="page"
           >
             {{ "navbar.categories" | translate }}
@@ -76,8 +76,8 @@
         <li>
           <a
             routerLink="/brands"
-            routerLinkActive="bg-red-400 text-white"
-            class="block py-2 px-3 text-gray-700 rounded-sm"
+            routerLinkActive="bg-green-600 rounded text-white"
+            class="block py-2 px-3 text-gray-700 rounded-lg "
             aria-current="page"
           >
             {{ "navbar.brands" | translate }}
@@ -94,7 +94,7 @@
           <button
             id="dropdownNavbarLink"
             data-dropdown-toggle="dropdownNavbar"
-            class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
+            class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded-lg  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
           >
             {{'navbar.lang'|translate}}
             <svg
@@ -149,7 +149,7 @@
         <li>
           <a
             role="button"
-            class="block py-2 px-3 text-gray-700 rounded-sm"
+            class="block py-2 px-3 text-gray-700 rounded-lg "
             aria-current="page"
           >
             <i class="fab fa-facebook"></i>
@@ -159,7 +159,7 @@
         <li>
           <a
             role="button"
-            class="block py-2 px-3 text-gray-700 rounded-sm"
+            class="block py-2 px-3 text-gray-700 rounded-lg "
             aria-current="page"
           >
             <i class="fab fa-twitter"></i>
@@ -169,7 +169,7 @@
         <li>
           <a
             role="button"
-            class="block py-2 px-3 text-gray-700 rounded-sm"
+            class="block py-2 px-3 text-gray-700 rounded-lg "
             aria-current="page"
           >
             <i class="fab fa-linkedin"></i>
@@ -182,7 +182,7 @@
             routerLink="/login"
             routerLinkActive="bg-green-400 text-white"
             role="button"
-            class="block py-2 px-3 text-gray-700 rounded-sm"
+            class="block py-2 px-3 text-gray-700 rounded-lg "
             aria-current="page"
           >
             {{ "navbar.login" | translate }}
@@ -194,7 +194,7 @@
             routerLink="/register"
             routerLinkActive="bg-green-400 text-white"
             role="button"
-            class="block py-2 px-3 text-gray-700 rounded-sm"
+            class="block py-2 px-3 text-gray-700 rounded-lg "
             aria-current="page"
           >
             {{ "register" | translate }}
@@ -205,11 +205,11 @@
           <a
             routerLink="/cart"
             routerLinkActive="text-green-600"
-            class="block text-3xl py-2 px-3 text-gray-700 rounded-sm relative"
+            class="block text-3xl py-2 px-3 text-gray-700 rounded-lg  relative"
             aria-current="page"
           >
             <i class="fas fa-cart-shopping"></i>
-            <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300 absolute top-0 start-0">{{cartCount()}}</span>
+            <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-lg  dark:bg-green-900 dark:text-green-300 absolute top-0 start-0">{{cartCount()}}</span>
           </a>
         </li>
 
@@ -217,7 +217,7 @@
           <a
             (click)="logOut()"
             role="button"
-            class="block py-2 px-3 text-gray-700 rounded-sm"
+            class="block py-2 px-3 text-gray-700 rounded-lg "
             aria-current="page"
           >
             {{ "navbar.signout" | translate }}
