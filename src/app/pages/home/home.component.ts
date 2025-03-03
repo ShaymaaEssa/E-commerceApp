@@ -2,7 +2,7 @@ import { CategoriesService } from './../../core/services/categories/categories.s
 import { CurrencyPipe, isPlatformBrowser, SlicePipe, TitleCasePipe } from '@angular/common';
 import { IProduct } from '../../shared/interfaces/iproduct';
 import { ProductsService } from './../../core/services/products/products.service';
-import { Component, inject, PLATFORM_ID } from '@angular/core';
+import { Component, computed, inject, PLATFORM_ID, Signal } from '@angular/core';
 import { ICategory } from '../../shared/interfaces/icategory';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { CartService } from '../../core/services/cart/cart.service';
@@ -11,6 +11,8 @@ import { TermtextPipe } from '../../shared/pipes/termtext.pipe';
 import { SearchPipe } from '../../shared/pipes/search.pipe';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { WishlistService } from '../../core/services/wishlist/wishlist.service';
+import { Subject } from 'rxjs';
 
 
 
@@ -26,10 +28,15 @@ export class HomeComponent {
   private readonly categoriesService = inject(CategoriesService);
   private readonly cartService = inject(CartService);
   private readonly toasterAlert = inject(ToastrService);
+  private readonly wishlistService = inject(WishlistService);
   
+  private readonly destroy$ = new Subject<void>(); // Subject to track unsubscription
+
 
   private readonly ID = inject( PLATFORM_ID) ;
   
+  wishlistItems:Signal<string[]> = computed(()=> this.wishlistService.wishListItems());
+
   products :IProduct[] = [];
   categories:ICategory[] = [];
 
@@ -85,6 +92,14 @@ export class HomeComponent {
     if(isPlatformBrowser(this.ID)){
       this.getProductsData();
       this.getCategoryData();
+      this.wishlistService.getWishList().subscribe({
+        next:(res)=>{
+          console.log(res);
+          if(res.status === 'success'){
+            this.wishlistService.wishListItems.set(res.data.map((item: { _id: string }) => item._id));
+          }
+        }
+      })
     }
     
   }
@@ -132,5 +147,34 @@ export class HomeComponent {
         console.log(err);
       }
     })
+  }
+
+  addProductWishList(productId:string){
+    this.wishlistService.addProductWishList(productId).subscribe({
+      next:(res)=>{
+        console.log(res);
+        if(res.status ==="success"){
+          this.toasterAlert.success(res.message, 'FreshCart');
+          this.wishlistService.wishListItems.set(res.data);
+        }
+      }
+    })
+  }
+
+  removeProductWishList(productId:string){
+    this.wishlistService.removeProductWishList(productId).subscribe({
+      next:(res)=>{
+        console.log(res);
+        this.toasterAlert.success(res.message, 'FreshCart');
+        this.wishlistService.wishListItems.set(res.data);
+      }
+    })
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.destroy$.next(); // Notify all subscriptions to unsubscribe
+    this.destroy$.complete(); // Complete the subject
   }
 }

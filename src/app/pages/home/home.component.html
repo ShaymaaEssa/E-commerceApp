@@ -51,7 +51,7 @@
 
     <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
         @for (product of products.slice(0,12)|search : searchText; track product._id) {
-            <div class="card border border-green-400/50 rounded-md overflow-hidden shadow relative group" >
+            <div class="card border border-green-400/50 rounded-md overflow-hidden shadow relative group py-5 px-5" >
                 <div [routerLink]="['/details', product._id]">
                     <div class="card-img">
                         <img [src]="product.imageCover" [alt]="product.title" class="w-full object-contain h-[250px]">
@@ -79,7 +79,18 @@
                 </div>
                 
 
-                <button (click)="addCartItem(product._id)" class="btn-main w-[90%] mx-auto block translate-y-full opacity-0 group-hover:-translate-y-0 group-hover:transition-all group-hover:duration-500 group-hover:opacity-100">Add to cart</button>
+                <div class="flex justify-center items-center gap-5">
+                    <button (click)="addCartItem(product._id)" class="btn-main w-[90%] me-auto block translate-y-full opacity-0 group-hover:-translate-y-0 group-hover:transition-all group-hover:duration-500 group-hover:opacity-100">Add to cart</button>
+
+                    <div class="fav-ico">
+                        @if(wishlistItems().includes(product._id)){
+                            <i class="fa-solid fa-heart text-[29px] cursor-pointer text-red-600" (click)="removeProductWishList(product._id)"></i>
+                        }@else{
+                            <i class="fa-regular fa-heart text-[29px] cursor-pointer" (click)="addProductWishList(product._id)"></i>
+
+                        }
+                    </div>
+                </div>
                 
             </div>
         }
