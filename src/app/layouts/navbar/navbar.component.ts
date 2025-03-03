@@ -5,6 +5,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { initFlowbite } from 'flowbite';
 import { MyTranslateService } from '../../core/services/myTranslate/my-translate.service';
 import { CartService } from '../../core/services/cart/cart.service';
+import { WishlistService } from '../../core/services/wishlist/wishlist.service';
 
 @Component({
   selector: 'app-navbar',
@@ -17,10 +18,12 @@ export class NavbarComponent implements OnInit {
 
   private readonly myTranslateService = inject(MyTranslateService);
   private readonly  cartService= inject(CartService);
+  private readonly  wishlistService= inject(WishlistService);
   private readonly authService = inject(AuthService);
 
   isLogin = input<boolean>(true);
   cartCount:Signal<number> = computed(()=> this.cartService.numCartItem());
+  wishlistCount:Signal<number> = computed(()=> this.wishlistService.wishlistCount());
 
 
   private initialized = false; // Prevent multiple initializations

@@ -9,9 +9,17 @@
         "lang": "اللغة"
     },
     "login": {
-        "loginNow": "تسجيل الدخول الآن",
+        "title": "تسجيل الدخول",
         "email": "البريد الإلكتروني",
         "password": "كلمة المرور",
-        "SignIn": "تسجيل الدخول"
-    }
+        "forgetPassword": "هل نسيت كلمة المرور؟",
+        "button": "تسجيل الدخول"
+      },
+      "error": {
+        "danger": "خطأ",
+        "emailRequired": "البريد الإلكتروني مطلوب",
+        "emailInvalid": "البريد الإلكتروني غير صالح",
+        "passwordRequired": "كلمة المرور مطلوبة",
+        "passwordInvalid": "كلمة المرور غير صالحة"
+      }
 }

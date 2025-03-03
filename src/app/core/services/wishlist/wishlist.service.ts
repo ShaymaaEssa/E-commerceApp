@@ -9,6 +9,7 @@ import { environment } from '../../environment/environment';
 export class WishlistService {
 
   wishListItems : WritableSignal<string[]> = signal([]);
+  wishlistCount: WritableSignal<number> = signal(0);
 
   constructor(private httpClient : HttpClient) { }
 

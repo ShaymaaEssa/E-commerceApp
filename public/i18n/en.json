@@ -8,11 +8,19 @@
     "signout":"SignOut",
     "lang":"Lang"
     }, 
-    "login":{
-        "loginNow":"Login Now",
-        "email":"Email",
-        "password":"Password",
-        "SignIn":"Sign In"
-    }
+    "login": {
+        "title": "Login",
+        "email": "Email",
+        "password": "Password",
+        "forgetPassword": "Forgot Password?",
+        "button": "Login"
+      },
+      "error": {
+        "danger": "Error",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Email is not valid",
+        "passwordRequired": "Password is required",
+        "passwordInvalid": "Password is not valid"
+      }
 
 }

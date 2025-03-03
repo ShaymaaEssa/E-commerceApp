@@ -97,6 +97,7 @@ export class HomeComponent {
           console.log(res);
           if(res.status === 'success'){
             this.wishlistService.wishListItems.set(res.data.map((item: { _id: string }) => item._id));
+            this.wishlistService.wishlistCount.set(this.wishlistService.wishListItems().length);
           }
         }
       })
@@ -156,6 +157,8 @@ export class HomeComponent {
         if(res.status ==="success"){
           this.toasterAlert.success(res.message, 'FreshCart');
           this.wishlistService.wishListItems.set(res.data);
+          this.wishlistService.wishlistCount.set(this.wishlistService.wishListItems().length);
+
         }
       }
     })
@@ -167,6 +170,8 @@ export class HomeComponent {
         console.log(res);
         this.toasterAlert.success(res.message, 'FreshCart');
         this.wishlistService.wishListItems.set(res.data);
+        this.wishlistService.wishlistCount.set(this.wishlistService.wishListItems().length);
+
       }
     })
   }

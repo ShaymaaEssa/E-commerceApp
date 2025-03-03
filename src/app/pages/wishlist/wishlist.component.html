@@ -1,0 +1,39 @@
+<section class="bg-gray-50 rounded shadow border p-4 w-[75%] mx-auto">
+    <h1 class="text-center text-3xl text-green-600 mb-4">WishList</h1>
+
+    @if ( wishListItems().length ) {
+        <div class="flex justify-between items-center mb-4">
+            <span>Num of WishList Items : {{wishListItems().length}}</span>
+            <!-- <button class="text-white px-6 py-2 border rounded hover:bg-red-600 transition-all duration-150 bg-red-400" (click)="clearWishList()"><i class="fa-solid fa-trash"></i> Clear WishList</button> -->
+        </div>
+        
+
+        @for (product of wishListItems(); track product._id) {
+    
+            <div class="grid md:grid-cols-[20%_minmax(0,1fr)] border-b mb-4 pb-4">
+    
+                <div class="img">
+                    <img [src]="product.imageCover" [alt]="product.title" class="w-full h-[150px] object-contain">
+                </div>
+        
+                <div class="info flex  justify-between items-center">
+                    <div>
+                        <h3>{{product.title}}</h3>
+                        <h4>Price : {{product.price | currency:'EGP'}}</h4>
+                        <button (click)="removeItemWishList(product.id)" class="text-red-600"> <i class="fas fa-trash-can text-red-600"></i> Remove</button>
+                    </div>
+        
+                    <div class="flex items-center justify-center gap-6">
+                        <button class="btn-main text-white" (click)="addItemToCart(product._id)">Add To Cart</button>
+                    </div>
+                </div> 
+    
+            </div>
+        }
+        <!-- <button class="btn-main w-full" [routerLink]="['/checkout', cartDetails._id]">CheckOUT</button> -->
+    } @else{
+        <h4 class="text-red-500 text-xl">Sorry! No Products in your wishlist.</h4>
+    }
+
+
+</section>

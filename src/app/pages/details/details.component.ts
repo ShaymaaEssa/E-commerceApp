@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, Signal, computed, inject } from '@angular/core';
 import {ActivatedRoute} from '@angular/router'
 import { ProductsService } from '../../core/services/products/products.service';
 import { IProduct } from '../../shared/interfaces/iproduct';
@@ -6,6 +6,7 @@ import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { CartService } from '../../core/services/cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { CurrencyPipe } from '@angular/common';
+import { WishlistService } from '../../core/services/wishlist/wishlist.service';
 
 @Component({
   selector: 'app-details',
@@ -19,6 +20,10 @@ export class DetailsComponent implements OnInit{
   private readonly productsService = inject(ProductsService);
   private readonly cartService = inject(CartService);
   private readonly toasterAlert = inject(ToastrService);
+  private readonly wishlistService = inject(WishlistService);
+  
+  wishlistItems:Signal<string[]> = computed(()=> this.wishlistService.wishListItems());
+  
 
   detailsProduct : IProduct = {} as IProduct;
 
@@ -65,6 +70,16 @@ export class DetailsComponent implements OnInit{
 
       }
     })
+
+    this.wishlistService.getWishList().subscribe({
+      next:(res)=>{
+        console.log(res);
+        if(res.status === 'success'){
+          this.wishlistService.wishListItems.set(res.data.map((item: { _id: string }) => item._id));
+          this.wishlistService.wishlistCount.set(this.wishlistService.wishListItems().length);
+        }
+      }
+    })
   }
 
   addCartItem(id:string):void{
@@ -78,6 +93,32 @@ export class DetailsComponent implements OnInit{
       },
       error:(err)=>{
         console.log(err);
+      }
+    })
+  }
+
+  addProductWishList(productId:string){
+    this.wishlistService.addProductWishList(productId).subscribe({
+      next:(res)=>{
+        console.log(res);
+        if(res.status ==="success"){
+          this.toasterAlert.success(res.message, 'FreshCart');
+          this.wishlistService.wishListItems.set(res.data);
+          this.wishlistService.wishlistCount.set(this.wishlistService.wishListItems().length);
+
+        }
+      }
+    })
+  }
+
+  removeProductWishList(productId:string){
+    this.wishlistService.removeProductWishList(productId).subscribe({
+      next:(res)=>{
+        console.log(res);
+        this.toasterAlert.success(res.message, 'FreshCart');
+        this.wishlistService.wishListItems.set(res.data);
+        this.wishlistService.wishlistCount.set(this.wishlistService.wishListItems().length);
+
       }
     })
   }
