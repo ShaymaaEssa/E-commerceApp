@@ -33,8 +33,18 @@
                 </div>
                 
 
-                <button (click)="addCartItem(product._id)" class="btn-main w-[90%] mx-auto block translate-y-full opacity-0 group-hover:-translate-y-0 group-hover:transition-all group-hover:duration-500 group-hover:opacity-100">Add to cart</button>
-                
+                <div class="flex justify-center items-center gap-5">
+                    <button (click)="addCartItem(product._id)" class="btn-main w-[90%] mx-auto block translate-y-full opacity-0 group-hover:-translate-y-0 group-hover:transition-all group-hover:duration-500 group-hover:opacity-100">Add to cart</button>
+
+                    <div class="fav-ico">
+                        @if(wishlistItems().includes(product._id)){
+                            <i class="fa-solid fa-heart text-[29px] cursor-pointer text-red-600" (click)="removeProductWishList(product._id)"></i>
+                        }@else{
+                            <i class="fa-regular fa-heart text-[29px] cursor-pointer" (click)="addProductWishList(product._id)"></i>
+
+                        }
+                    </div>
+                </div>
             </div>
         }
 
