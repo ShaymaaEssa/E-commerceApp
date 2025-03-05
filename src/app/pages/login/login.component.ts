@@ -5,6 +5,7 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import { Router, RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 
+
 @Component({
   selector: 'app-login',
   imports: [ReactiveFormsModule, RouterLink, TranslatePipe],
