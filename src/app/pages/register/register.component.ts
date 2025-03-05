@@ -3,13 +3,13 @@ import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators
 import { validateHeaderName } from 'http';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })

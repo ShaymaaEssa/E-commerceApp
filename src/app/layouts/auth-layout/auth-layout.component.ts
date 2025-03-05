@@ -20,6 +20,9 @@ export class AuthLayoutComponent {
     dots: true,
     navSpeed: 700,
     navText: ['', ''],  // Ensure buttons are visible
+    autoplay: true,  // ✅ Enable autoplay
+    autoplayTimeout: 3000, // ✅ Time between slides (in milliseconds)
+    autoplayHoverPause: true, // ✅ Pause on hover
     responsive: {
       0: {
         items: 1
