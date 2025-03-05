@@ -5,7 +5,11 @@ module.exports = {
     "./node_modules/flowbite/**/*.js" // add this line
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        titillium: ["'Titillium Web'", "sans-serif"],
+      },
+    },
     container:{
       center: true
     }

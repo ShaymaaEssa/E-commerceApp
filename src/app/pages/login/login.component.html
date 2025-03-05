@@ -1,4 +1,4 @@
-<section class="w-1/2 mx-auto bg-gray-50 p-4 border shadow">
+<!-- <section class="w-1/2 mx-auto bg-gray-50 p-4 border shadow">
   <h1 class="text-3xl text-center text-green-600 font-medium">{{ 'login.title' | translate }}</h1>
 
   <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
@@ -67,4 +67,119 @@
         <p class="bg-green-400 text-white border py-6 px-2">{{ success }}</p>
       }
   </form>
+</section> -->
+
+
+<section class="h-full">
+  <div class="grid md:grid-cols-2 lg:grid-cols-[40%__minmax(0,1fr)]">
+    <div class="form-section bg-[#F5F5F7]">
+      <div class="text-center">
+        <div class="img brand flex gap-4 justify-center items-center py-4">
+          <img src="/images/cart.png" alt="brand icon" class="w-[75px] h-[75px]">
+          <h1 class="text-[48px] text-black font-bold leading-[53px] font-titillium">ByteCart</h1>
+        </div>
+        
+        <p class="text-[#2d385e] text-[24px] font-titillium font-bold leading-[26px] py-3">Login to your account</p>
+        <p class="font-titillium font-normal text-[#2d385e] leading-[23px] text-[16px] ">Don’t have an account? <a routerLink="/register" class="text-[#4f77ff]">Sign Up Free!</a></p>
+        <div class="social flex gap-5 justify-between py-5 w-[75%] mx-auto">
+          <div class="facebook cursor-pointer bg-[#3B5998] px-10 py-2 rounded-md text-white">
+            <i class="fa-brands fa-facebook-f"></i>
+          </div>
+          <div class="twitter cursor-pointer bg-[#00ACED] px-10 py-2 rounded-md text-white">
+            <i class="fa-brands fa-twitter"></i>
+          </div>
+          <div class="google cursor-pointer bg-[#C74126] px-10 py-2 rounded-md text-white">
+            <i class="fa-brands fa-google"></i>
+          </div>
+        </div>
+
+        <div class="relative flex items-center justify-around my-4">
+          <div class="w-[30%] h-px bg-gray-300 absolute left-[50px] top-[19px]"></div>
+          <span class="px-2 text-[#aaa] font-titillium font-normal text-[24px] leading-[34px]">or</span>
+          <div class="w-[30%] h-px bg-gray-300 absolute right-[50px] top-[19px]"></div>
+        </div>
+
+        <div class="form">
+          <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+            <div class="mb-5">
+                @let emailControl = loginForm.get('email');
+                <label for="email" class="font-titillium font-normal block mb-2 text-lg  text-center   text-gray-600 dark:text-white">{{ 'login.email' | translate }}</label>
+                <input formControlName="email" placeholder="E-mail" type="email" id="email" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[75%] mx-auto p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                @if (emailControl?.errors && emailControl?.touched) {
+                    <div class="w-[75%] mx-auto flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                        <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                        </svg>
+                        <span class="sr-only">{{ 'error.danger' | translate }}</span>
+                        <div>
+                            <ul class="mt-1.5 list-disc list-inside">
+                              @if(emailControl?.getError('required')){
+                                <li>{{ 'error.emailRequired' | translate }}</li>
+                              }
+                              @else if (emailControl?.getError('email')) {
+                                <li>{{ 'error.emailInvalid' | translate }}</li>
+                              }
+                          </ul>
+                        </div>
+                      </div>
+                  }
+            </div>
+        
+            <div class="mb-5">
+                @let passwordControl = loginForm.get('password');
+                <label for="password" class="font-titillium font-normal block mb-2 text-lg  text-center   text-gray-600 dark:text-white">{{ 'login.password' | translate }}</label>
+                <input formControlName="password" placeholder="Password" type="password" id="password" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[75%] mx-auto p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                @if (passwordControl?.errors && passwordControl?.touched) {
+                    <div class="w-[75%] mx-auto flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                        <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                        </svg>
+                        <span class="sr-only">{{ 'error.danger' | translate }}</span>
+                        <div>
+                            <ul class="mt-1.5 list-disc list-inside">
+                              @if(passwordControl?.getError('required')){
+                                <li>{{ 'error.passwordRequired' | translate }}</li>
+                              }
+                              @else if (passwordControl?.getError('pattern')) {
+                                <li>{{ 'error.passwordInvalid' | translate }}</li>
+                              }
+                          </ul>
+                        </div>
+                      </div>
+                  }
+            </div>
+
+            <div class="w-[75%] mx-auto flex justify-between items-center">
+              <div class="flex items-center ">
+                <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="default-checkbox" class="font-titillium text-[16px] leading-[23px] text-[#666] ms-2  font-normal  dark:text-gray-300">Remember Me</label>
+              </div>
+              <a class="text-[#4f77ff] font-normal font-titillium text-[16px] leading-[23px]" routerLink="/forget">{{ 'login.forgetPassword' | translate }}</a>
+            </div>
+        
+            <div class="flex items-center justify-center gap-5 py-10 w-[75%] mx-auto">
+              
+              <button class="btn-main w-full" type="submit" [disabled]="loginForm.invalid || isLoading">{{ 'login.button' | translate }}
+                @if (isLoading) {
+                  <span><i class="fas fa-spin fa-spinner"></i></span>
+                }
+              </button>
+            </div>
+      
+            @if (msgError) {
+              <p class="w-[75%] mx-auto bg-red-400 text-white border py-6 px-2">{{ msgError }}</p>
+            }
+      
+            @if (success) {
+              <p class="w-[75%] mx-auto bg-green-400 text-white border py-6 px-2">{{ success }}</p>
+            }
+        </form>
+        </div>
+
+      </div>
+    </div>
+    <div class="img">
+      
+    </div>
+  </div>
 </section>
