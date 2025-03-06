@@ -1,16 +1,17 @@
 <!-- <app-navbar [isLogin]="false"></app-navbar> -->
 <!-- <div class="container py-10  px-5 mx-auto"> -->
 
-<div class="flex flex-col min-h-screen ">
+<!-- good div -->
+<!-- <div class="flex flex-col min-h-screen ">
 
         <section class="flex items-center justify-center min-h-screen">
                 <div class="grid md:grid-cols-2 lg:grid-cols-[30%_minmax(0,1fr)] w-full h-full">
-                        <div>
+                        <div class="formContainer max-h-full overflow-auto w-full ">
                                 <router-outlet></router-outlet>
                         </div>
 
-                        <div class="img h-screen overflow-hidden">
-                                <owl-carousel-o [options]="customOptions" class="h-full">
+                        <div class="img h-screen overflow-hidden carouselContainer flex items-center justify-center">
+                                <owl-carousel-o [options]="customOptions" class="h-full w-full">
                                         <ng-template carouselSlide>
                                                 <div class="h-full">
                                                         <img src="/images/slide1.jpg" alt="" class="w-[100%] h-[100vh] object-cover ">
@@ -44,10 +45,96 @@
 
                                 </owl-carousel-o>
                         </div>
+
+
+                              
+                              
+                
                 </div>
         </section>
-</div>
+</div> -->
 
+
+
+
+
+    <div class="flex flex-col min-h-screen">
+        <section class="flex items-center justify-center min-h-screen">
+            <div class="grid md:grid-cols-2 lg:grid-cols-[30%_minmax(0,1fr)] w-full h-screen">
+                
+                <!-- ✅ Registration Form with Internal Scroll -->
+                <div class="formContainer h-screen overflow-auto">
+                    <router-outlet></router-outlet>
+                </div>
+    
+                <!-- ✅ Carousel (Fixed, Does Not Move) -->
+                <div class="img h-screen overflow-hidden carouselContainer hidden items-center justify-center md:flex">
+                    <owl-carousel-o [options]="customOptions" class="h-full w-full">
+                        
+                        <!-- Slide 1 -->
+                        <ng-template carouselSlide>
+                            <div class="h-full flex flex-col justify-end relative">
+                                <img src="/images/slide1.jpg" alt="" class="w-full h-screen object-cover">
+                                <div class="absolute bottom-[90px] left-1/2 transform -translate-x-1/2 bg-black bg-opacity-0 text-white text-center px-6 py-4 w-3/4  ">
+                                    <h2 class="font-titillium  text-[32px]  font-bold">Shop Smarter, Live Better</h2>
+                                    <p class="font-titillium  text-[18px]  font-normal"> Discover the best deals on your favorite products!</p>
+                                </div>
+                            </div>
+                        </ng-template>
+    
+                        <!-- Slide 2 (Mobiles & Electronics) -->
+                        <ng-template carouselSlide>
+                            <div class="h-full flex flex-col justify-end relative">
+                                <img src="/images/mobiles.jpg" alt="" class="w-full h-screen object-cover">
+                                <div class="absolute bottom-[90px] left-1/2 transform -translate-x-1/2 bg-black bg-opacity-0 text-white text-center px-6 py-4 w-3/4  ">
+                                    <h2 class="font-titillium  text-[32px]  font-bold">Latest Tech, Best Prices!</h2>
+                                    <p class="font-titillium  text-[18px]  font-normal">Upgrade your gadgets with unbeatable offers!</p>
+                                </div>
+                            </div>
+                        </ng-template>
+    
+                        <!-- Slide 3 (E-commerce Shopping) -->
+                        <ng-template carouselSlide>
+                            <div class="h-full flex flex-col justify-end relative">
+                                <img src="/images/e-commerce.jpg" alt="" class="w-full h-screen object-cover">
+                                <div class="absolute bottom-[90px] left-1/2 transform -translate-x-1/2 bg-black bg-opacity-0 text-white text-center px-6 py-4 w-3/4  ">
+                                    <h2 class="font-titillium  text-[32px]  font-bold">Your One-Stop Online Store!</h2>
+                                    <p class="font-titillium  text-[18px]  font-normal">Safe, fast, and convenient shopping at your fingertips.</p>
+                                </div>
+                            </div>
+                        </ng-template>
+    
+                        <!-- Slide 4 (Electronics & Smart Devices) -->
+                        <ng-template carouselSlide>
+                            <div class="h-full flex flex-col justify-end relative">
+                                <img src="/images/devices.jpg" alt="" class="w-full h-screen object-cover">
+                                <div class="absolute bottom-[90px] left-1/2 transform -translate-x-1/2 bg-black bg-opacity-0 text-white text-center px-6 py-4 w-3/4  ">
+                                    <h2 class="font-titillium  text-[32px]  font-bold">Smart Devices for a Smarter Life!</h2>
+                                    <p class="font-titillium  text-[18px]  font-normal">Find the latest electronics & accessories in one place.</p>
+                                </div>
+                            </div>
+                        </ng-template>
+    
+                        <!-- Slide 5 (Fashion & Lifestyle) -->
+                        <ng-template carouselSlide>
+                            <div class="h-full flex flex-col justify-end relative">
+                                <img src="/images/slide2.jpg" alt="" class="w-full h-screen object-cover">
+                                <div class="absolute bottom-[90px] left-1/2 transform -translate-x-1/2 bg-black bg-opacity-0 text-white text-center px-6 py-4 w-3/4  ">
+                                    <h2 class="font-titillium  text-[32px]  font-bold">Style, Comfort, and Savings!</h2>
+                                    <p class="font-titillium  text-[18px]  font-normal">Trendy fashion & accessories at the best prices.</p>
+                                </div>
+                            </div>
+                        </ng-template>
+    
+                    </owl-carousel-o>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    
+      
+      
 
 <!-- </div> -->
 
