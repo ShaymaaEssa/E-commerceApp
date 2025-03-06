@@ -235,7 +235,7 @@
           @let nameControl = registerForm.get('name');
         <label
           for="name"
-          class="font-titillium font-normal capitalize block mb-2  text-gray-900 dark:text-white"
+          class="font-titillium capitalize font-normal block mb-2 text-lg  text-left   text-gray-600 dark:text-white"
           >name</label
         >
         <input
@@ -278,7 +278,7 @@
         <label
         
           for="email"
-          class="font-titillium font-normal capitalize block mb-2   text-gray-900 dark:text-white"
+          class="font-titillium capitalize font-normal block mb-2 text-lg  text-left   text-gray-600 dark:text-white"
           >email</label
         >
         <input
@@ -314,7 +314,7 @@
           @let passwordControl = registerForm.get('password');
         <label
           for="password"
-          class="font-titillium font-normal capitalize block mb-2   text-gray-900 dark:text-white"
+          class="font-titillium capitalize font-normal block mb-2 text-lg  text-left   text-gray-600 dark:text-white"
           >password</label
         >
         <input
@@ -349,7 +349,7 @@
       <div class="mb-5">
         <label
           for="rePassword"
-          class="font-titillium font-normal capitalize block mb-2   text-gray-900 dark:text-white"
+          class="font-titillium capitalize font-normal block mb-2 text-lg  text-left   text-gray-600 dark:text-white"
           >rePassword</label
         >
         <input
@@ -394,7 +394,7 @@
           @let phoneControl = registerForm.get('phone');
         <label
           for="phone"
-          class="font-titillium font-normal capitalize block mb-2   text-gray-900 dark:text-white"
+          class="font-titillium capitalize font-normal block mb-2 text-lg  text-left   text-gray-600 dark:text-white"
           >phone</label
         >
         <input
@@ -425,7 +425,7 @@
         }
       </div>
   
-      <p class="font-titillium font-normal text-[#2d385e] leading-[23px] text-[16px] py-5" >I agree to the <a class="text-[#4f77ff] ">privacy policy</a>  and  <a class="text-[#4f77ff] ">terms of service</a> .</p>
+      <p class="font-titillium font-normal text-[#2d385e] leading-[23px] text-[16px] py-5" >I agree to the <a class="text-[#4f77ff] cursor-pointer ">privacy policy</a>  and  <a class="text-[#4f77ff] cursor-pointer">terms of service</a> .</p>
       
       <button class="btn-main w-full" type="submit" [disabled]="registerForm.invalid || isLoading">Sign Up
         @if (isLoading) {
