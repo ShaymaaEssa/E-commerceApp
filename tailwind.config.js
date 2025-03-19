@@ -9,6 +9,9 @@ module.exports = {
       fontFamily: {
         titillium: ["'Titillium Web'", "sans-serif"],
       },
+      fontFamily: {
+        mulish: ["'Mulish'", "sans-serif"],
+      },
     },
     container:{
       center: true

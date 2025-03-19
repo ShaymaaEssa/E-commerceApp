@@ -16,6 +16,7 @@ import { initFlowbite } from 'flowbite';
 import { MyTranslateService } from '../../core/services/myTranslate/my-translate.service';
 import { CartService } from '../../core/services/cart/cart.service';
 import { WishlistService } from '../../core/services/wishlist/wishlist.service';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-navbar',
@@ -36,6 +37,7 @@ export class NavbarComponent implements OnInit {
   );
 
   private initialized = false; // Prevent multiple initializations
+  userName: string | null = '';
 
   ngOnInit(): void {
     if (localStorage.getItem('userToken') !== null) {
@@ -46,6 +48,8 @@ export class NavbarComponent implements OnInit {
       });
 
       console.log(`navbar cart item = ${this.cartCount}`);
+
+      this.userName = this.getUserName();
     }
   }
 
@@ -64,5 +68,19 @@ export class NavbarComponent implements OnInit {
 
   changeLang(lang: string) {
     this.myTranslateService.changeLangTranslate(lang);
+  }
+
+  getUserName(): string | null {
+    const token = localStorage.getItem('userToken');
+    if (!token) return null;
+
+    try {
+      const decodedToken: any = jwtDecode(token);
+      console.log(`user name = ${decodedToken}`)
+      return decodedToken.name || null;
+    } catch (error) {
+      console.error('Error decoding token:', error);
+      return null;
+    }
   }
 }
