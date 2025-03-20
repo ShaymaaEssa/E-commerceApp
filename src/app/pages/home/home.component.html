@@ -33,7 +33,7 @@
 </section>
 
 <section class="bg-[#F1F1F1]">
-    <div class="container py-2 px-5 mx-auto ">
+    <div class="container  pb-12 px-5 mx-auto ">
         <!-- <div class="grid md:grid-cols-[70%_minmax(0,1fr)]">
 
     
@@ -56,19 +56,69 @@
 
                 <ng-template carouselSlide>
                     <div class="relative w-full h-[500px] flex items-center justify-end text-white">
-                        <!-- Background with opacity -->
-                        <div class="absolute inset-0 bg-[url('/images/hero-slider/1.jpg')] bg-cover bg-center opacity-80"></div>
-                      
-                        <!-- Text Content (remains fully visible) -->
-                        <div class="relative text-left max-w-lg pe-6">
-                          <h1 class=" font-extrabold text-[43px] leading-[50px]">It’s Time </h1>
-                          <h1 class=" font-extrabold text-[43px]">for Big Savings</h1>
-                          <p class="text-lg">Awesome discounts and deals</p>
-                          <p class="text-xl font-semibold">From $299.9</p>
-                          <button class="mt-4 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Shop Now</button>
-                        </div>
+                      <!-- Background Image -->
+                      <div class="absolute inset-0">
+                        <img src="/images/hero-slider/1.jpg" alt="Hero Image" class="w-full h-full object-cover rounded-xl">
+                        <!-- Semi-transparent Black Overlay -->
+                        <div class="absolute inset-0 bg-black opacity-20 rounded-xl"></div>
                       </div>
-                </ng-template>
+                  
+                      <!-- Text Content -->
+                      <div class="relative text-left max-w-lg pe-6 ml-20 z-10 font-mulish">
+                        <span class="bg-red-100 text-red-800 text-sm font-medium px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300">Weekend Deal</span>
+                        <h1 class="font-extrabold text-[43px] leading-[50px] pt-6">It’s Time</h1>
+                        <h1 class="font-extrabold text-[43px]">for Big Savings</h1>
+                        <p class="font-medium text-[14px] leading-[22px] uppercase">Awesome discounts and deals</p>
+                        <p class="font-medium text-[16px] leading-[24px] pt-3">From <span class="font-extrabold text-[27px] leading-[33px] text-[#fcc904] pe-3">$599.9</span></p>
+                        <button class="mt-4 px-10 py-4 bg-primary text-white rounded-lg hover:bg-blue-600 font-bold text-[14px] leading-[15px] uppercase">Shop Now</button>
+                      </div>
+                    </div>
+                    
+                  </ng-template>
+
+                  <ng-template carouselSlide>
+                    <div class="relative w-full h-[500px] flex items-center justify-end text-white">
+                      <!-- Background Image -->
+                      <div class="absolute inset-0">
+                        <img src="/images/hero-slider/2.jpg" alt="Hero Image" class="w-full h-full object-cover rounded-xl">
+                        <!-- Semi-transparent Black Overlay -->
+                        <div class="absolute inset-0 bg-black opacity-20 rounded-xl"></div>
+                      </div>
+                  
+                      <!-- Text Content -->
+                      <div class="relative text-left max-w-lg pe-6 ml-20 z-10 font-mulish">
+                        <span class="bg-red-100 text-red-800 text-sm font-medium px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300">Weekend Deal</span>
+                        <h1 class="font-extrabold text-[43px] leading-[50px] pt-6">Top Mobile Phones and Accessories Deals </h1>
+                        <h1 class="font-extrabold text-[43px]">at a Glimpse</h1>
+                        <p class="font-medium text-[14px] leading-[22px] uppercase">Free Shipping by ByteCart</p>
+                        <p class="font-medium text-[16px] leading-[24px] pt-3">From <span class="font-extrabold text-[27px] leading-[33px] text-[#fcc904] pe-3">$199.9</span></p>
+                        <button class="mt-4 px-10 py-4 bg-primary text-white rounded-lg hover:bg-blue-600 font-bold text-[14px] leading-[15px] uppercase">Shop Now</button>
+                      </div>
+                    </div>
+                    
+                  </ng-template>
+
+                  <ng-template carouselSlide>
+                    <div class="relative w-full h-[500px] flex items-center justify-end text-white">
+                      <!-- Background Image -->
+                      <div class="absolute inset-0">
+                        <img src="/images/hero-slider/3.jpg" alt="Hero Image" class="w-full h-full object-cover rounded-xl">
+                        <!-- Semi-transparent Black Overlay -->
+                        <div class="absolute inset-0 bg-black opacity-20 rounded-xl"></div>
+                      </div>
+                  
+                      <!-- Text Content -->
+                      <div class="relative text-left max-w-lg pe-6 ml-20 z-10 font-mulish">
+                        <span class="bg-red-100 text-red-800 text-sm font-medium px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300">Weekend Deal</span>
+                        <h1 class="font-extrabold text-[43px] leading-[50px] pt-6">Laptops and Accessories Now </h1>
+                        <h1 class="font-extrabold text-[43px]">Up to 30% Off</h1>
+                        <p class="font-medium text-[14px] leading-[22px] uppercase">Free Shipping by ByteCart</p>
+                        <p class="font-medium text-[16px] leading-[24px] pt-3">From <span class="font-extrabold text-[27px] leading-[33px] text-[#fcc904] pe-3">$800</span></p>
+                        <button class="mt-4 px-10 py-4 bg-primary text-white rounded-lg hover:bg-blue-600 font-bold text-[14px] leading-[15px] uppercase">Shop Now</button>
+                      </div>
+                    </div>
+                    
+                  </ng-template>
 
               </owl-carousel-o>
         </div>
