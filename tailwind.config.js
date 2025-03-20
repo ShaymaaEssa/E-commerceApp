@@ -6,10 +6,11 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        titillium: ["'Titillium Web'", "sans-serif"],
+      colors: {
+        primary: '#048ED6', // Replace with your actual color
       },
       fontFamily: {
+        titillium: ["'Titillium Web'", "sans-serif"],
         mulish: ["'Mulish'", "sans-serif"],
       },
     },

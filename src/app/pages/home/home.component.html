@@ -1,47 +1,83 @@
-<section>
-    <div class="grid md:grid-cols-[70%_minmax(0,1fr)]">
-        <div>
-            
+<section class="bg-[#F1F1F1]">
+    <div class="container py-10 px-5 mx-auto">
+        <h2 class="text-xl py-2 capitalize font-mulish text-[15px] leading-[20px] font-bold pl-5">Categories</h2>
+
+        <owl-carousel-o [options]="customOptions">
+      
+          
+            @for (cat of categories; track cat._id) {
+                <ng-template carouselSlide >
+                    <!-- content for one slide -->
+                     <!-- <div>
+                      <img [src]="cat.image" [alt]="cat.name" class="h-[250px] object-contain">
+                     </div>
+                     <h3 class="text-green-600 text-center">{{cat.name}}</h3> -->
+
+                     <div class="bg-white flex flex-row-reverse gap-2 group items-center justify-center w-[90%] py-7 rounded-xl hover:border hover:border-primary transition duration-300 ease-in-out cursor-pointer">
+                        <div class="image">
+                            <!-- <i class="fa-solid fa-mobile-screen-button text-[50px] "></i> -->
+
+                            <img [src]="cat.image" [alt]="cat.name" class="h-[50px] w-[50px] object-cover">
+                        </div>
+                        <p class="font-mulish font-bold text-[15px] leading-[20px] group-hover:text-blue-500 transition duration-300 ease-in-out">{{cat.name}}</p>
+                     </div>
+                  </ng-template>
+            }
+    
+       
+      
+        </owl-carousel-o>
+    </div>
+
+    
+</section>
+
+<section class="bg-[#F1F1F1]">
+    <div class="container py-2 px-5 mx-auto ">
+        <!-- <div class="grid md:grid-cols-[70%_minmax(0,1fr)]">
+
+    
+            <div>
+                <img src="/images/grocery-banner.png" alt="slider image 2" class="w-full h-[150px] object-contain">
+                <img src="/images/grocery-banner-2.jpeg" alt="slider image 3" class="w-full h-[150px] object-contain">
+            </div>
+        </div> -->
+
+        <div >
+                
             <owl-carousel-o [options]="customMainSlider">
-                <ng-template carouselSlide><img src="/images/img1.avif" alt="slider image 1" class="w-full h-[300px] "></ng-template>
+                <!-- <ng-template carouselSlide><img src="/images/img1.avif" alt="slider image 1" class="w-full h-[300px] rounded-xl"></ng-template>
                 <ng-template carouselSlide><img src="/images/img2.avif" alt="slider image 1" class="w-full h-[300px] "></ng-template>
 
                 <ng-template carouselSlide><img src="/images/img3.avif" alt="slider image 1" class="w-full h-[300px] "></ng-template>
                 <ng-template carouselSlide><img src="/images/img4.avif" alt="slider image 1" class="w-full h-[300px] "></ng-template>
                 <ng-template carouselSlide><img src="/images/img5.avif" alt="slider image 1" class="w-full h-[300px] "></ng-template>
-                <ng-template carouselSlide><img src="/images/img6.avif" alt="slider image 1" class="w-full h-[300px] "></ng-template>
+                <ng-template carouselSlide><img src="/images/img6.avif" alt="slider image 1" class="w-full h-[300px] "></ng-template> -->
+
+                <ng-template carouselSlide>
+                    <div class="relative w-full h-[500px] flex items-center justify-end text-white">
+                        <!-- Background with opacity -->
+                        <div class="absolute inset-0 bg-[url('/images/hero-slider/1.jpg')] bg-cover bg-center opacity-80"></div>
+                      
+                        <!-- Text Content (remains fully visible) -->
+                        <div class="relative text-left max-w-lg pe-6">
+                          <h1 class=" font-extrabold text-[43px] leading-[50px]">It’s Time </h1>
+                          <h1 class=" font-extrabold text-[43px]">for Big Savings</h1>
+                          <p class="text-lg">Awesome discounts and deals</p>
+                          <p class="text-xl font-semibold">From $299.9</p>
+                          <button class="mt-4 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Shop Now</button>
+                        </div>
+                      </div>
+                </ng-template>
 
               </owl-carousel-o>
         </div>
 
-        <div>
-            <img src="/images/grocery-banner.png" alt="slider image 2" class="w-full h-[150px] object-contain">
-            <img src="/images/grocery-banner-2.jpeg" alt="slider image 3" class="w-full h-[150px] object-contain">
-        </div>
     </div>
+
 </section>
 
-<section>
-    <h2 class="text-3xl py-4 capitalize">Popular Categories</h2>
 
-    <owl-carousel-o [options]="customOptions">
-  
-      
-        @for (cat of categories; track cat._id) {
-            <ng-template carouselSlide >
-                <!-- content for one slide -->
-                 <div>
-                  <img [src]="cat.image" [alt]="cat.name" class="h-[250px] object-contain">
-                 </div>
-                 <h3 class="text-green-600 text-center">{{cat.name}}</h3>
-              </ng-template>
-        }
-
-   
-  
-    </owl-carousel-o>
-    
-</section>
 
 <section>
 

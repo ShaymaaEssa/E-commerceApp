@@ -62,7 +62,7 @@ export class HomeComponent {
     mouseDrag: true,
     touchDrag: true,
     pullDrag: false,
-    dots: true,
+    dots: false,
     autoplay:true,
     autoplayTimeout:3000,
     autoplayHoverPause:true,
@@ -76,10 +76,10 @@ export class HomeComponent {
         items: 2
       },
       740: {
-        items: 3
+        items: 4
       },
       940: {
-        items: 4
+        items: 6
       }
     },
     nav: true, 
