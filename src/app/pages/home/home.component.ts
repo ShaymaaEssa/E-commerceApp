@@ -140,6 +140,7 @@ export class HomeComponent {
     });
   }
 
+
   getCategoryData(){
     this.categoriesService.getAllCategories().subscribe({
       next:(res)=>{
