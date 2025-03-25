@@ -3,33 +3,36 @@
         <h2 class="text-xl py-2 capitalize font-mulish text-[15px] leading-[20px] font-bold pl-5">Categories</h2>
 
         <owl-carousel-o [options]="customOptions">
-      
-          
+
+
             @for (cat of categories; track cat._id) {
-                <ng-template carouselSlide >
-                    <!-- content for one slide -->
-                     <!-- <div>
+            <ng-template carouselSlide>
+                <!-- content for one slide -->
+                <!-- <div>
                       <img [src]="cat.image" [alt]="cat.name" class="h-[250px] object-contain">
                      </div>
                      <h3 class="text-green-600 text-center">{{cat.name}}</h3> -->
 
-                     <div class="bg-white flex flex-row-reverse gap-2 group items-center justify-center w-[90%] py-7 rounded-xl hover:border hover:border-primary transition duration-300 ease-in-out cursor-pointer">
-                        <div class="image">
-                            <!-- <i class="fa-solid fa-mobile-screen-button text-[50px] "></i> -->
+                <div
+                    class="bg-white flex flex-row-reverse gap-2 group items-center justify-center w-[90%] py-7 rounded-xl hover:border hover:border-primary transition duration-300 ease-in-out cursor-pointer">
+                    <div class="image">
+                        <!-- <i class="fa-solid fa-mobile-screen-button text-[50px] "></i> -->
 
-                            <img [src]="cat.image" [alt]="cat.name" class="h-[50px] w-[50px] object-cover">
-                        </div>
-                        <p class="font-mulish font-bold text-[15px] leading-[20px] group-hover:text-blue-500 transition duration-300 ease-in-out">{{cat.name}}</p>
-                     </div>
-                  </ng-template>
+                        <img [src]="cat.image" [alt]="cat.name" class="h-[50px] w-[50px] object-cover">
+                    </div>
+                    <p
+                        class="font-mulish font-bold text-[15px] leading-[20px] group-hover:text-blue-500 transition duration-300 ease-in-out">
+                        {{cat.name}}</p>
+                </div>
+            </ng-template>
             }
-    
-       
-      
+
+
+
         </owl-carousel-o>
     </div>
 
-    
+
 </section>
 
 <section class="bg-[#F1F1F1]">
@@ -43,8 +46,8 @@
             </div>
         </div> -->
 
-        <div >
-                
+        <div>
+
             <owl-carousel-o [options]="customMainSlider">
                 <!-- <ng-template carouselSlide><img src="/images/img1.avif" alt="slider image 1" class="w-full h-[300px] rounded-xl"></ng-template>
                 <ng-template carouselSlide><img src="/images/img2.avif" alt="slider image 1" class="w-full h-[300px] "></ng-template>
@@ -55,72 +58,94 @@
                 <ng-template carouselSlide><img src="/images/img6.avif" alt="slider image 1" class="w-full h-[300px] "></ng-template> -->
 
                 <ng-template carouselSlide>
-                    <div class="relative w-full h-[500px] flex items-center justify-end text-white">
-                      <!-- Background Image -->
-                      <div class="absolute inset-0">
-                        <img src="/images/hero-slider/1.jpg" alt="Hero Image" class="w-full h-full object-cover rounded-xl">
-                        <!-- Semi-transparent Black Overlay -->
-                        <div class="absolute inset-0 bg-black opacity-20 rounded-xl"></div>
-                      </div>
-                  
-                      <!-- Text Content -->
-                      <div class="relative text-left max-w-lg pe-6 ml-20 z-10 font-mulish">
-                        <span class="bg-red-100 text-red-800 text-sm font-medium px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300">Weekend Deal</span>
-                        <h1 class="font-extrabold text-[43px] leading-[50px] pt-6">It’s Time</h1>
-                        <h1 class="font-extrabold text-[43px]">for Big Savings</h1>
-                        <p class="font-medium text-[14px] leading-[22px] uppercase">Awesome discounts and deals</p>
-                        <p class="font-medium text-[16px] leading-[24px] pt-3">From <span class="font-extrabold text-[27px] leading-[33px] text-[#fcc904] pe-3">$599.9</span></p>
-                        <button class="mt-4 px-10 py-4 bg-primary text-white rounded-lg hover:bg-blue-600 font-bold text-[14px] leading-[15px] uppercase">Shop Now</button>
-                      </div>
-                    </div>
-                    
-                  </ng-template>
+                    <div class="relative w-full h-[500px] flex items-center justify-start text-white">
+                        <!-- Background Image -->
+                        <div class="absolute inset-0">
+                            <img src="/images/hero-slider/1.jpg" alt="Hero Image"
+                                class="w-full h-full object-cover rounded-xl rtl:scale-x-[-1]">
+                            <!-- Semi-transparent Black Overlay -->
+                            <div class="absolute inset-0 bg-black opacity-20 rounded-xl"></div>
+                        </div>
 
-                  <ng-template carouselSlide>
-                    <div class="relative w-full h-[500px] flex items-center justify-end text-white">
-                      <!-- Background Image -->
-                      <div class="absolute inset-0">
-                        <img src="/images/hero-slider/2.jpg" alt="Hero Image" class="w-full h-full object-cover rounded-xl">
-                        <!-- Semi-transparent Black Overlay -->
-                        <div class="absolute inset-0 bg-black opacity-20 rounded-xl"></div>
-                      </div>
-                  
-                      <!-- Text Content -->
-                      <div class="relative text-left max-w-lg pe-6 ml-20 z-10 font-mulish">
-                        <span class="bg-red-100 text-red-800 text-sm font-medium px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300">Weekend Deal</span>
-                        <h1 class="font-extrabold text-[43px] leading-[50px] pt-6">Top Mobile Phones and Accessories Deals </h1>
-                        <h1 class="font-extrabold text-[43px]">at a Glimpse</h1>
-                        <p class="font-medium text-[14px] leading-[22px] uppercase">Free Shipping by ByteCart</p>
-                        <p class="font-medium text-[16px] leading-[24px] pt-3">From <span class="font-extrabold text-[27px] leading-[33px] text-[#fcc904] pe-3">$199.9</span></p>
-                        <button class="mt-4 px-10 py-4 bg-primary text-white rounded-lg hover:bg-blue-600 font-bold text-[14px] leading-[15px] uppercase">Shop Now</button>
-                      </div>
+                        <!-- Text Content -->
+                        <div class="relative text-left  ps-6 ms-20 z-10 font-mulish">
+                            <span
+                                class="bg-red-100 text-red-800 text-sm font-medium px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300">Weekend
+                                Deal</span>
+                            <h1 class="font-extrabold text-[43px] leading-[50px] pt-6">It’s Time</h1>
+                            <h1 class="font-extrabold text-[43px]">for Big Savings</h1>
+                            <p class="font-medium text-[14px] leading-[22px] uppercase">Awesome discounts and deals</p>
+                            <p class="font-medium text-[16px] leading-[24px] pt-3">From <span
+                                    class="font-extrabold text-[27px] leading-[33px] text-[#fcc904] pe-3">$599.9</span>
+                            </p>
+                            <button
+                                class="mt-4 px-10 py-4 bg-primary text-white rounded-lg hover:bg-blue-600 font-bold text-[14px] leading-[15px] uppercase">Shop
+                                Now</button>
+                        </div>
                     </div>
-                    
-                  </ng-template>
 
-                  <ng-template carouselSlide>
-                    <div class="relative w-full h-[500px] flex items-center justify-end text-white">
-                      <!-- Background Image -->
-                      <div class="absolute inset-0">
-                        <img src="/images/hero-slider/3.jpg" alt="Hero Image" class="w-full h-full object-cover rounded-xl">
-                        <!-- Semi-transparent Black Overlay -->
-                        <div class="absolute inset-0 bg-black opacity-20 rounded-xl"></div>
-                      </div>
-                  
-                      <!-- Text Content -->
-                      <div class="relative text-left max-w-lg pe-6 ml-20 z-10 font-mulish">
-                        <span class="bg-red-100 text-red-800 text-sm font-medium px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300">Weekend Deal</span>
-                        <h1 class="font-extrabold text-[43px] leading-[50px] pt-6">Laptops and Accessories Now </h1>
-                        <h1 class="font-extrabold text-[43px]">Up to 30% Off</h1>
-                        <p class="font-medium text-[14px] leading-[22px] uppercase">Free Shipping by ByteCart</p>
-                        <p class="font-medium text-[16px] leading-[24px] pt-3">From <span class="font-extrabold text-[27px] leading-[33px] text-[#fcc904] pe-3">$800</span></p>
-                        <button class="mt-4 px-10 py-4 bg-primary text-white rounded-lg hover:bg-blue-600 font-bold text-[14px] leading-[15px] uppercase">Shop Now</button>
-                      </div>
+                </ng-template>
+
+                <ng-template carouselSlide>
+                    <div class="relative w-full h-[500px] flex items-center justify-start text-white">
+                        <!-- Background Image -->
+                        <div class="absolute inset-0">
+                            <img src="/images/hero-slider/2.jpg" alt="Hero Image"
+                                class="w-full h-full object-cover rounded-xl rtl:scale-x-[-1]">
+                            <!-- Semi-transparent Black Overlay -->
+                            <div class="absolute inset-0 bg-black opacity-20 rounded-xl"></div>
+                        </div>
+
+                        <!-- Text Content -->
+                        <div class="relative text-left max-w-lg pe-6 ml-20 z-10 font-mulish">
+                            <span
+                                class="bg-red-100 text-red-800 text-sm font-medium px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300">Weekend
+                                Deal</span>
+                            <h1 class="font-extrabold text-[43px] leading-[50px] pt-6">Top Mobile Phones and Accessories
+                                Deals </h1>
+                            <h1 class="font-extrabold text-[43px]">at a Glimpse</h1>
+                            <p class="font-medium text-[14px] leading-[22px] uppercase">Free Shipping by ByteCart</p>
+                            <p class="font-medium text-[16px] leading-[24px] pt-3">From <span
+                                    class="font-extrabold text-[27px] leading-[33px] text-[#fcc904] pe-3">$199.9</span>
+                            </p>
+                            <button
+                                class="mt-4 px-10 py-4 bg-primary text-white rounded-lg hover:bg-blue-600 font-bold text-[14px] leading-[15px] uppercase">Shop
+                                Now</button>
+                        </div>
                     </div>
-                    
-                  </ng-template>
 
-              </owl-carousel-o>
+                </ng-template>
+
+                <ng-template carouselSlide>
+                    <div class="relative w-full h-[500px] flex items-center justify-start text-white">
+                        <!-- Background Image -->
+                        <div class="absolute inset-0">
+                            <img src="/images/hero-slider/3.jpg" alt="Hero Image"
+                                class="w-full h-full object-cover rounded-xl rtl:scale-x-[-1]">
+                            <!-- Semi-transparent Black Overlay -->
+                            <div class="absolute inset-0 bg-black opacity-20 rounded-xl"></div>
+                        </div>
+
+                        <!-- Text Content -->
+                        <div class="relative text-left max-w-lg pe-6 ml-20 z-10 font-mulish">
+                            <span
+                                class="bg-red-100 text-red-800 text-sm font-medium px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300">Weekend
+                                Deal</span>
+                            <h1 class="font-extrabold text-[43px] leading-[50px] pt-6">Laptops and Accessories Now </h1>
+                            <h1 class="font-extrabold text-[43px]">Up to 30% Off</h1>
+                            <p class="font-medium text-[14px] leading-[22px] uppercase">Free Shipping by ByteCart</p>
+                            <p class="font-medium text-[16px] leading-[24px] pt-3">From <span
+                                    class="font-extrabold text-[27px] leading-[33px] text-[#fcc904] pe-3">$800</span>
+                            </p>
+                            <button
+                                class="mt-4 px-10 py-4 bg-primary text-white rounded-lg hover:bg-blue-600 font-bold text-[14px] leading-[15px] uppercase">Shop
+                                Now</button>
+                        </div>
+                    </div>
+
+                </ng-template>
+
+            </owl-carousel-o>
         </div>
 
     </div>
@@ -131,11 +156,107 @@
 
     <div class="container py-10 px-5 mx-auto">
 
-        <div class="grid lg:grid-cols-[30%_minmax(0,1fr)]">
-            <div class="border-4 border-primary py-6 px-6 rounded-3xl flex flex-col justify-center items-center gap-3">
+        <div class="grid grid-cols-1 lg:grid-cols-[30%_minmax(0,1fr)] gap-5 ">
+            <div
+                class="border-4 border-primary py-10 px-10  rounded-3xl flex flex-col justify-center items-center gap-3">
                 <p class="text-red-600 font-mulish text-[14px] leading-[14px] font-medium">ONLY FOR TODAY</p>
-                <p class="font-mulish text-[25px] leading-[30px] font-extrabold">Deal Of The Day</p>
-                <p class="font-mulish text-[15px] leading-[24px] font-normal text-center">Today's top deal on consumer electronics! Don't miss out on more amazing daily offers.</p>
+                <p class="font-mulish text-[25px] leading-[30px] font-extrabold ">Deal Of The Day</p>
+                <p class="font-mulish text-[15px] leading-[24px] font-normal text-center">Today's top deal on consumer
+                    electronics! Don't miss out on more amazing daily offers.</p>
+
+                <div class="flex gap-4 font-mulish mt-5">
+                    <div class="flex flex-col items-center gap-1">
+                        <div
+                            class="hours bg-primary p-5 text-white rounded-xl font-extrabold text-[30px] leading-[30px]">
+                            09</div>
+                        <span class="text-[15px] text-[#848484] leading-[15px] font-medium">Hours</span>
+                    </div>
+
+                    <div class="flex flex-col items-center gap-1">
+                        <div
+                            class="hours bg-primary p-5 text-white rounded-xl font-extrabold text-[30px] leading-[30px]">
+                            09</div>
+                        <span class="text-[15px] text-[#848484] leading-[15px] font-medium">Mins</span>
+                    </div>
+
+                    <div class="flex flex-col items-center gap-1">
+                        <div
+                            class="hours bg-primary p-5 text-white rounded-xl font-extrabold text-[30px] leading-[30px]">
+                            09</div>
+                        <span class="text-[15px] text-[#848484] leading-[15px] font-medium">Secs</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div>
+
+                <owl-carousel-o [options]="customMainSlider">
+                    <!-- <ng-template carouselSlide><img src="/images/img1.avif" alt="slider image 1" class="w-full h-[300px] rounded-xl"></ng-template>
+                    <ng-template carouselSlide><img src="/images/img2.avif" alt="slider image 1" class="w-full h-[300px] "></ng-template>
+    
+                    <ng-template carouselSlide><img src="/images/img3.avif" alt="slider image 1" class="w-full h-[300px] "></ng-template>
+                    <ng-template carouselSlide><img src="/images/img4.avif" alt="slider image 1" class="w-full h-[300px] "></ng-template>
+                    <ng-template carouselSlide><img src="/images/img5.avif" alt="slider image 1" class="w-full h-[300px] "></ng-template>
+                    <ng-template carouselSlide><img src="/images/img6.avif" alt="slider image 1" class="w-full h-[300px] "></ng-template> -->
+
+                    @for (product of products.slice(0,3) ; let i = $index ;track product._id) {
+
+                    <ng-template carouselSlide>
+                        <div class="border border-gray-300 rounded-xl flex flex-row gap-10 py-10 px-10 items-center">
+                            <div class="flex flex-col gap-2 ">
+                                @for(image of product.images; track $index){
+                                    <div class="img w-[50px] h-[70px]">
+                                        <img [src]="image" [alt]="product.title" class="cursor-pointer w-full h-full object-cover opacity-50 hover:opacity-100" (click)="setActiveCursolImage(i, image)">
+                                    </div>
+                                }
+
+                            </div>
+
+                            <div>
+                                <img [src]="activeImages[i] ? activeImages[i] : product.imageCover" [alt]="product.title" class="w-[300px] h-[300px] object-contain" >
+                            </div>
+
+                            <div class="flex flex-col gap-3 font-mulish">
+                                <div>
+                                    <span class="inline-block bg-green-100 text-green-800 text-sm font-semibold mr-2 px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300">20%</span>
+                                </div>
+                                <h2 class="text-[15px] leading-[20px] font-medium cursor-pointer text-gray-500 hover:text-primary">{{product.title}}</h2>
+                                <p class="font-semibold ">{{product.description}}</p>
+                                <div class="flex items-center">
+                                    @for (num of [1,2,3,4,5].slice(0,product.ratingsAverage) ; track $index) {
+                                    <i class="fas fa-star text-yellow-300"></i>
+                                    }
+    
+                                    @if(product.ratingsAverage % 1 !== 0){
+                                    <i class="fas fa-star fa-star-half-stroke text-yellow-300"></i>
+    
+                                    }
+                                    <span class="text-gray-500 pl-3">{{product.ratingsAverage}}</span>
+                                </div>
+
+                                <div>
+                                    <span class="text-red-700 font-bold text-[20px] leading-[22px]">{{product.price| currency:'EGP' }}</span> <span class="pl-4 text-gray-400 font-normal text-[16px] leading-[22px] line-through">{{product.price *10/8 | currency:'EGP' }}</span>
+                                </div>
+
+                                <p class="text-[15px] leading-[20px] font-medium text-gray-500">{{product.slug}}</p>
+
+                                <button (click)="addCartItem(product._id)"
+                                class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">Add
+                                to cart</button>
+                                <button></button>
+
+                            </div>
+                        </div>
+
+                    </ng-template>
+
+                    }
+
+
+
+
+                </owl-carousel-o>
             </div>
         </div>
     </div>
@@ -146,19 +267,20 @@
 
 <section>
     <div class="container py-10 px-5 mx-auto">
-    <h2 class="text-3xl py-4 capitalize">Popular products</h2>
+        <h2 class="text-3xl py-4 capitalize">Popular products</h2>
 
-    <input [(ngModel)]="searchText" type="search" placeholder="Search by Name ..." class="form-control w-[50%] mx-auto my-4 block">
+        <input [(ngModel)]="searchText" type="search" placeholder="Search by Name ..."
+            class="form-control w-[50%] mx-auto my-4 block">
 
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
-        @for (product of products.slice(0,12)|search : searchText; track product._id) {
-            <div class="card border border-green-400/50 rounded-md overflow-hidden shadow relative group py-5 px-5" >
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+            @for (product of products.slice(0,12)|search : searchText; track product._id) {
+            <div class="card border border-green-400/50 rounded-md overflow-hidden shadow relative group py-5 px-5">
                 <div [routerLink]="['/details', product._id]">
                     <div class="card-img">
                         <img [src]="product.imageCover" [alt]="product.title" class="w-full object-contain h-[250px]">
-        
+
                     </div>
-    
+
                     <div class="card-body px-2 py-4">
                         <h4 class="text-green-500 text-xs">{{product.category.name | titlecase | slice:0:5 }}</h4>
                         <h3 class="font-medium">{{product.title | termtext:2 }}</h3>
@@ -166,11 +288,11 @@
                             <span>{{product.price| currency:'EGP' }}</span>
                             <div class="flex items-center">
                                 @for (num of [1,2,3,4,5].slice(0,product.ratingsAverage) ; track $index) {
-                                    <i class="fas fa-star text-yellow-300"></i>
+                                <i class="fas fa-star text-yellow-300"></i>
                                 }
-                                
+
                                 @if(product.ratingsAverage % 1 !== 0){
-                                    <i class="fas fa-star fa-star-half-stroke text-yellow-300"></i>
+                                <i class="fas fa-star fa-star-half-stroke text-yellow-300"></i>
 
                                 }
                                 <span class="text-gray-500">{{product.ratingsAverage}}</span>
@@ -178,24 +300,28 @@
                         </div>
                     </div>
                 </div>
-                
+
 
                 <div class="flex justify-center items-center gap-5">
-                    <button (click)="addCartItem(product._id)" class="btn-main w-[90%] me-auto block translate-y-full opacity-0 group-hover:-translate-y-0 group-hover:transition-all group-hover:duration-500 group-hover:opacity-100">Add to cart</button>
+                    <button (click)="addCartItem(product._id)"
+                        class="btn-main w-[90%] me-auto block translate-y-full opacity-0 group-hover:-translate-y-0 group-hover:transition-all group-hover:duration-500 group-hover:opacity-100">Add
+                        to cart</button>
 
                     <div class="fav-ico">
                         @if(wishlistItems().includes(product._id)){
-                            <i class="fa-solid fa-heart text-[29px] cursor-pointer text-red-600" (click)="removeProductWishList(product._id)"></i>
+                        <i class="fa-solid fa-heart text-[29px] cursor-pointer text-red-600"
+                            (click)="removeProductWishList(product._id)"></i>
                         }@else{
-                            <i class="fa-regular fa-heart text-[29px] cursor-pointer" (click)="addProductWishList(product._id)"></i>
+                        <i class="fa-regular fa-heart text-[29px] cursor-pointer"
+                            (click)="addProductWishList(product._id)"></i>
 
                         }
                     </div>
                 </div>
-                
-            </div>
-        }
 
-    </div>
+            </div>
+            }
+
+        </div>
     </div>
 </section>

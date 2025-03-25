@@ -1,0 +1,22 @@
+// .owl-theme .owl-nav.disabled + .owl-dots{
+//     position: absolute !important;  
+//     bottom: 0 !important;
+//     left: 0 !important;
+//     transform: translateX(-50%) !important;
+// }
+
+::ng-deep .owl-theme .owl-nav.disabled + .owl-dots {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 100%;
+    text-align: center;
+}
+
+::ng-deep .owl-theme .owl-dots .owl-dot.active span {
+
+    width: 40px;
+    background: #048ED6;
+    
+}

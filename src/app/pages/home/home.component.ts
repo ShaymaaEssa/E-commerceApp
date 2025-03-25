@@ -42,6 +42,11 @@ export class HomeComponent {
 
   searchText:string="";
 
+  isRTL = document.documentElement.dir === 'rtl';
+
+  activeImages:string[] = [];
+
+
   customMainSlider: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -53,9 +58,22 @@ export class HomeComponent {
     autoplayHoverPause:true,
     navSpeed: 700,
     navText: ['', ''],
-    items:1,
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 1
+      },
+      740: {
+        items: 1
+      },
+      940: {
+        items: 1
+      }
+    },
     nav: false,
-    rtl:true
+    rtl:this.isRTL
   }
   customOptions: OwlOptions = {
     loop: true,
@@ -83,7 +101,7 @@ export class HomeComponent {
       }
     },
     nav: true, 
-    rtl:true
+    rtl:this.isRTL
   }
 
   ngOnInit(): void {
@@ -102,6 +120,8 @@ export class HomeComponent {
         }
       })
     }
+
+    
     
   }
 
@@ -181,5 +201,9 @@ export class HomeComponent {
     //Add 'implements OnDestroy' to the class.
     this.destroy$.next(); // Notify all subscriptions to unsubscribe
     this.destroy$.complete(); // Complete the subject
+  }
+
+  setActiveCursolImage(index:number, image:string):void{
+    this.activeImages[index] = image;
   }
 }
