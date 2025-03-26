@@ -244,7 +244,7 @@
                                 <button (click)="addCartItem(product._id)"
                                 class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">Add
                                 to cart</button>
-                                <button></button>
+                                
 
                             </div>
                         </div>
@@ -263,6 +263,74 @@
 
 
 
+</section>
+
+<section>
+    <div class="container py-10 px-5 mx-auto font-mulish">
+        <h2 class="font-bold text-black text-[24px] leading-[29px] pb-2 border-b border-b-gray-300">Top Selling Products</h2>
+        <div class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 pt-4">
+
+            @for (product of products.slice(0,8)|search : searchText; track product._id) {
+            
+                <div class="relative group border border-transparent shadow-sm hover:border-primary rounded-lg p-4 hover:shadow-lg transition-all duration-200 ease-linear">
+                    <div >
+                        <div class="img">
+                            <img [src]="product.imageCover" [alt]="product.title">
+                        </div>
+                        <div class="info flex flex-col gap-4 pt-2">
+                            <h3 class="cursor-pointer font-medium text-[14px] leading-[18px] text-gray-500 hover:text-primary">{{product.title}}</h3>
+                            <p class="cursor-pointer font-semibold text-[15px] leading-[18px] text-black hover:text-primary">{{product.description}}</p>
+                            <div class="flex items-center ">
+                                @for (num of [1,2,3,4,5].slice(0,product.ratingsAverage) ; track $index) {
+                                <i class="fas fa-star text-yellow-300"></i>
+                                }
+    
+                                @if(product.ratingsAverage % 1 !== 0){
+                                <i class="fas fa-star fa-star-half-stroke text-yellow-300"></i>
+    
+                                }
+                                <span class="text-gray-500 pl-3">{{product.ratingsAverage}}</span>
+                            </div>
+    
+                            <div>
+                                <span class="text-red-700 font-bold text-[15px] leading-[18px]">{{product.price| currency:'EGP' }}</span> <span class="pl-4 text-gray-400 font-normal text-[14px] leading-[18px] line-through">{{product.price *10/8 | currency:'EGP' }}</span>
+                            </div>
+    
+                            <button (click)="addCartItem(product._id)"
+                            class="w-full text-[12px] leading-[12px] font-extrabold border-primary text-black py-4 hover:text-white border  hover:bg-primary focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-sm px-5 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">Add
+                            to cart</button>
+
+                            <div class=" w-full hidden  group-hover:block ">
+                                <p class="text-[14px] leading-[24px] font-medium text-[#848484]">{{product.slug}}</p>
+                            </div>
+    
+                        </div>
+                    </div>
+
+                    <div class="absolute top-0 left-0 p-4">
+                        <span class="bg-primary text-white text-xs font-medium me-2 px-2.5 py-0.5 rounded-b-xl rounded-tr-xl dark:bg-blue-900 dark:text-blue-300">20%</span>
+
+                    </div>
+
+                    <div class="absolute  top-0 right-0 p-3 ">
+                        <div class="icons flex flex-col gap-1 overflow-hidden">
+                            <div class=" icon border bg-white border-gray-300 rounded-full p-1 px-2 opacity-100 group-hover:opacity-100 transition-all duration-500   translate-y-[300%] group-hover:translate-y-0">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+
+                            <div class=" icon bg-white border border-gray-300 rounded-full p-1 px-2 opacity-0 group-hover:opacity-100 transition-all  duration-500 delay-100 translate-y-[100%] group-hover:translate-y-0">
+                                <i class="fa-regular fa-heart"></i>
+                                <button></button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    
+    </div>
 </section>
 
 <section>
