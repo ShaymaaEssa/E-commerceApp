@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { WishlistService } from '../../core/services/wishlist/wishlist.service';
 import { Subject } from 'rxjs';
+import { BrandsService } from '../../core/services/brands/brands.service';
 
 
 
@@ -26,6 +27,7 @@ export class HomeComponent {
 
   private readonly productsService=inject(ProductsService);
   private readonly categoriesService = inject(CategoriesService);
+  private readonly brandsService = inject(BrandsService);
   private readonly cartService = inject(CartService);
   private readonly toasterAlert = inject(ToastrService);
   private readonly wishlistService = inject(WishlistService);

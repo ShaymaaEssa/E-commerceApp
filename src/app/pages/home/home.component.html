@@ -300,7 +300,7 @@
                             class="w-full text-[12px] leading-[12px] font-extrabold border-primary text-black py-4 hover:text-white border  hover:bg-primary focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-sm px-5 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">Add
                             to cart</button>
 
-                            <div class=" w-full hidden  group-hover:block ">
+                            <div class=" w-full opacity-0  group-hover:opacity-100 transition-all duration-300 ">
                                 <p class="text-[14px] leading-[24px] font-medium text-[#848484]">{{product.slug}}</p>
                             </div>
     
@@ -314,13 +314,19 @@
 
                     <div class="absolute  top-0 right-0 p-3 ">
                         <div class="icons flex flex-col gap-1 overflow-hidden">
-                            <div class=" icon border bg-white border-gray-300 rounded-full p-1 px-2 opacity-100 group-hover:opacity-100 transition-all duration-500   translate-y-[300%] group-hover:translate-y-0">
+                            <div class=" icon border bg-white border-gray-300 rounded-full p-1 px-2 opacity-100 group-hover:opacity-100 transition-all duration-500   translate-y-[300%] group-hover:translate-y-0 hover:bg-blue-100 cursor-pointer">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </div>
 
-                            <div class=" icon bg-white border border-gray-300 rounded-full p-1 px-2 opacity-0 group-hover:opacity-100 transition-all  duration-500 delay-100 translate-y-[100%] group-hover:translate-y-0">
-                                <i class="fa-regular fa-heart"></i>
-                                <button></button>
+                            <div class=" icon bg-white border border-gray-300 rounded-full p-1 px-2 opacity-0 group-hover:opacity-100 transition-all  duration-500 delay-100 translate-y-[100%] group-hover:translate-y-0 hover:bg-blue-100 cursor-pointer">
+                                @if(wishlistItems().includes(product._id)){
+                                    <i class="fa-solid fa-heart cursor-pointer text-red-600"
+                                        (click)="removeProductWishList(product._id)"></i>
+                                    }@else{
+                                    <i class="fa-regular fa-heart cursor-pointer"
+                                        (click)="addProductWishList(product._id)"></i>
+            
+                                    }
                             </div>
                         </div>
                     </div>
@@ -330,6 +336,17 @@
 
         </div>
     
+    </div>
+</section>
+
+<section>
+    <div class="container py-10 px-5 mx-auto">
+        <owl-carousel-o [options]="customMainSlider">
+            @for (product of products.slice(0,3) ; let i = $index ;track product._id) {
+
+                <ng-template carouselSlide></ng-template>
+            }
+        </owl-carousel-o>
     </div>
 </section>
 
