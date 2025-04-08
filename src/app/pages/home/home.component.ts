@@ -14,6 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 import { WishlistService } from '../../core/services/wishlist/wishlist.service';
 import { Subject } from 'rxjs';
 import { BrandsService } from '../../core/services/brands/brands.service';
+import { IBrand } from '../../shared/interfaces/ibrand';
 
 
 
@@ -41,6 +42,7 @@ export class HomeComponent {
 
   products :IProduct[] = [];
   categories:ICategory[] = [];
+  brands:IBrand[] = [];
 
   searchText:string="";
 
@@ -112,6 +114,7 @@ export class HomeComponent {
     if(isPlatformBrowser(this.ID)){
       this.getProductsData();
       this.getCategoryData();
+      this.getBrandsData();
       this.wishlistService.getWishList().subscribe({
         next:(res)=>{
           console.log(res);
@@ -155,6 +158,17 @@ export class HomeComponent {
     })
   }
 
+  getBrandsData(){
+    this.brandsService.getAllBrands().subscribe({
+      next:(res)=>{
+        console.log(res.data);
+        this.brands = res.data;
+      },
+      error:(err)=>{
+        console.log(err);
+      }
+    })
+  }
 
   addCartItem(id:string):void{
     this.cartService.addProductToCart(id).subscribe({

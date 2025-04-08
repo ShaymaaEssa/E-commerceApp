@@ -265,14 +265,14 @@
 
 </section>
 
-<section>
+<section class="bg-[#F1F1F1]">
     <div class="container py-10 px-5 mx-auto font-mulish">
         <h2 class="font-bold text-black text-[24px] leading-[29px] pb-2 border-b border-b-gray-300">Top Selling Products</h2>
         <div class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 pt-4">
 
             @for (product of products.slice(0,8)|search : searchText; track product._id) {
             
-                <div class="relative group border border-transparent shadow-sm hover:border-primary rounded-lg p-4 hover:shadow-lg transition-all duration-200 ease-linear">
+                <div class="relative group border border-transparent shadow-sm hover:border-primary rounded-lg p-4 hover:shadow-lg transition-all duration-200 ease-linear bg-white">
                     <div >
                         <div class="img">
                             <img [src]="product.imageCover" [alt]="product.title">
@@ -341,34 +341,45 @@
 
 <section>
     <div class="container py-10 px-5 mx-auto">
-        <owl-carousel-o [options]="customMainSlider">
-            @for (product of products.slice(0,3) ; let i = $index ;track product._id) {
+        <owl-carousel-o [options]="customOptions">
+            @for (brand of brands ; let i = $index ;track brand._id) {
 
-                <ng-template carouselSlide></ng-template>
+                <ng-template carouselSlide>
+                    <div
+                    class="">
+                    <div class="image">
+                        <!-- <i class="fa-solid fa-mobile-screen-button text-[50px] "></i> -->
+
+                        <img [src]="brand.image" [alt]="brand.name" class="h-[150px] w-[50px] object-cover cursor-pointer opacity-35 hover:opacity-100 transition-all duration-300">
+                    </div>
+                   
+                </div>
+                </ng-template>
             }
         </owl-carousel-o>
     </div>
 </section>
 
-<section>
-    <div class="container py-10 px-5 mx-auto">
-        <h2 class="text-3xl py-4 capitalize">Popular products</h2>
+<section class="bg-[#F1F1F1]">
+    <div class="container py-10 px-5 mx-auto font-mulish">
+        <h2 class="font-bold text-black text-[24px] leading-[29px] pb-2 border-b border-b-gray-300 capitalize">Popular products</h2>
+        
 
         <input [(ngModel)]="searchText" type="search" placeholder="Search by Name ..."
             class="form-control w-[50%] mx-auto my-4 block">
 
-        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-10">
             @for (product of products.slice(0,12)|search : searchText; track product._id) {
-            <div class="card border border-green-400/50 rounded-md overflow-hidden shadow relative group py-5 px-5">
-                <div [routerLink]="['/details', product._id]">
-                    <div class="card-img">
+            <div class="card border border-green-400/50 rounded-md overflow-hidden shadow relative group py-5 px-5 bg-white">
+                <div [routerLink]="['/details', product._id]" class="flex justify-center items-center">
+                    <div class="card-img w-1/2">
                         <img [src]="product.imageCover" [alt]="product.title" class="w-full object-contain h-[250px]">
 
                     </div>
 
-                    <div class="card-body px-2 py-4">
-                        <h4 class="text-green-500 text-xs">{{product.category.name | titlecase | slice:0:5 }}</h4>
-                        <h3 class="font-medium">{{product.title | termtext:2 }}</h3>
+                    <div class="card-body px-2 py-4 w-1/2 font-mulish">
+                        <h4 class=" text-[14px] leading-[18px] hover:text-primary text-[#B0B0B0] font-medium">{{product.category.name | titlecase | slice:0:5 }}</h4>
+                        <h3 class="font-semibold text-[16px] leading-[22px]">{{product.title | termtext:2 }}</h3>
                         <div class="flex justify-between items-center">
                             <span>{{product.price| currency:'EGP' }}</span>
                             <div class="flex items-center">
