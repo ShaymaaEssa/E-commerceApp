@@ -369,19 +369,20 @@
             class="form-control w-[50%] mx-auto my-4 block">
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-10">
-            @for (product of products.slice(0,12)|search : searchText; track product._id) {
-            <div class="card border border-green-400/50 rounded-md overflow-hidden shadow relative group py-5 px-5 bg-white">
+            @for (product of products.slice(4,12)|search : searchText; track product._id) {
+            <div class="card border hover:border-primary rounded-md overflow-hidden shadow relative group py-5 px-5 bg-white">
                 <div [routerLink]="['/details', product._id]" class="flex justify-center items-center">
                     <div class="card-img w-1/2">
                         <img [src]="product.imageCover" [alt]="product.title" class="w-full object-contain h-[250px]">
 
                     </div>
 
-                    <div class="card-body px-2 py-4 w-1/2 font-mulish">
+                    <div class="card-body px-2 py-4 w-1/2 font-mulish flex flex-col gap-2">
                         <h4 class=" text-[14px] leading-[18px] hover:text-primary text-[#B0B0B0] font-medium">{{product.category.name | titlecase | slice:0:5 }}</h4>
-                        <h3 class="font-semibold text-[16px] leading-[22px]">{{product.title | termtext:2 }}</h3>
-                        <div class="flex justify-between items-center">
-                            <span>{{product.price| currency:'EGP' }}</span>
+                        <h3 class="font-semibold text-[16px] leading-[22px] hover:text-primary text-black">{{product.title  }}</h3>
+                        <!-- <h3 class="font-normal text-[14px] leading-[20px] hover:text-primary text-black">{{product.description}}</h3> -->
+                        <div class="flex flex-col gap-2 ">
+                            
                             <div class="flex items-center">
                                 @for (num of [1,2,3,4,5].slice(0,product.ratingsAverage) ; track $index) {
                                 <i class="fas fa-star text-yellow-300"></i>
@@ -393,6 +394,8 @@
                                 }
                                 <span class="text-gray-500">{{product.ratingsAverage}}</span>
                             </div>
+
+                            <span class=" text-[20px] leading-[22px] text-[#dd2831] font-bold" >{{product.price| currency:'EGP' }}</span>
                         </div>
                     </div>
                 </div>
@@ -400,7 +403,7 @@
 
                 <div class="flex justify-center items-center gap-5">
                     <button (click)="addCartItem(product._id)"
-                        class="btn-main w-[90%] me-auto block translate-y-full opacity-0 group-hover:-translate-y-0 group-hover:transition-all group-hover:duration-500 group-hover:opacity-100">Add
+                        class="btn-main w-[90%] me-auto block translate-y-full opacity-0 group-hover:-translate-y-0 group-hover:transition-all group-hover:duration-500 group-hover:opacity-100 text-[16px] leading-[14px] font-extrabold font-mulish capitalize">Add
                         to cart</button>
 
                     <div class="fav-ico">
@@ -420,4 +423,26 @@
 
         </div>
     </div>
+</section>
+
+<section>
+    <div class="container py-10 px-5 mx-auto">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+            <div>
+                <div class="icon-info flex items-center gap-1 ">
+                    <div class="icon">
+                        <i class="fa-solid fa-truck-fast text-[60px] text-[#0068c8]"></i>
+                    </div>
+                    <div class="flex flex-col font-mulish">
+                        <span class="text-[15px] leading-[18px] font-[900] text-black">Free Delivery</span>
+                        <span class="text-[15px] leading-[24px] font-medium text-black">Free shipping on all order</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
 </section>
