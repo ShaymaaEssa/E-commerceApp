@@ -34,6 +34,8 @@ export class DetailsComponent implements OnInit{
     touchDrag: false,
     pullDrag: false,
     dots: false,
+    autoplay:true,
+    autoplayTimeout:4000,
     navSpeed: 700,
     navText: ['', ''],
     responsive: {
@@ -41,13 +43,13 @@ export class DetailsComponent implements OnInit{
         items: 1
       },
       400: {
-        items: 2
+        items: 1
       },
       740: {
-        items: 3
+        items: 1
       },
       940: {
-        items: 4
+        items: 1
       }
     },
     nav: true

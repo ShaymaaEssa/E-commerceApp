@@ -2,9 +2,9 @@
 
 
 @if (detailsProduct._id) {
-    <section>
+    <section >
         <div class="container py-16 px-5 mx-auto font-mulish">
-            <div class="grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-3 gap-y-14">
+            <div class="grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-10 gap-y-14">
                 <div class="img">
                     
     
@@ -16,18 +16,19 @@
                         @for (img of detailsProduct.images; track $index) {
                             <ng-template carouselSlide >
                                 <!-- content for one slide -->
-                                 <div>
-                                  <img [src]="img" [alt]="detailsProduct.title" class="h-[250px] object-contain">
+                                 <div class="h-[860px] border border-gray-200 rounded-lg py-8 px-3 flex justify-center items-center">
+                                  <img [src]="img" [alt]="detailsProduct.title" class="w-full h-full">
                                  </div>
                                 
                               </ng-template>
                         }
                     
                       </owl-carousel-o>
-                
+            
+
                 </div>
         
-                <div  class="flex flex-col justify-center items-start gap-2" >
+                <div  class="flex flex-col justify-center items-start gap-2 font-mulish" >
                     <h4 class="text-[15px] leading-[18px] font-medium text-[#848484]">{{detailsProduct.category.name}}</h4>
                     <h2 class="text-[24px] leading-[29px] font-normal text-black">{{detailsProduct.title}}</h2>
                     
@@ -44,20 +45,40 @@
                         <span class="font-medium text-[15px] leading-[18px] text-black ps-2">( {{detailsProduct.ratingsAverage}} )</span>
                         <span class="font-medium text-[15px] leading-[18px] text-black ps-3"> 5 Reviews</span>
                     </div>
-                    <p>{{detailsProduct.price | currency : 'EGP'}}</p>
-                    <p class="capitalize text-gray-600 ps-5 py-10">{{detailsProduct.description}}</p>
-                    <p class="text-black">{{detailsProduct.category.name}}</p>
+                    <p class="text-[36px] leading-[36px] text-[#dd2831] font-bold pt-5">{{detailsProduct.price | currency : 'EGP'}}</p>
+                    <ul class="list-disc px-10">
+                        <li><p class="capitalize text-[#848484] text-[15px] leading-[18px]  pt-6 ">{{detailsProduct.description}}</p></li>
+                        <li><p class="capitalize text-[#848484] text-[15px] leading-[18px]  pt-6">{{detailsProduct.category.name}}</p></li>
+                    </ul>
+                    
+                    <p class="font-bold text-[18px] leading-[16px] pt-10">Images:</p>
+                    <div class="flex gap-3">
+                        @for(img of detailsProduct.images; track $index){
+                            <div  class="w-[120px] h-[120px] py-3 px-3 border border-gray-200 flex justify-center cursor-pointer hover:border-primary rounded-lg">
+                                <img [src]="img" [alt]="detailsProduct.title" class="w-full rounded-lg">
+                            </div>
+
+                        }
+                    </div>
+                    
+
+                    <ul class="bg-[#E8F3FE] py-8 px-9 rounded-lg list-disc my-10">
+                        <li class="text-[#0068c8] font-medium text-[15px] leading-[18px]">Estimated delivery time 14-30 days</li>
+                        <li class="text-[#0068c8] font-medium text-[15px] leading-[18px] pt-5">12 months warranty at BrandShop Warranty Center.</li>
+                        <li class="text-[#0068c8] font-medium text-[15px] leading-[18px] pt-5">Any complain or suggestion, please contact us.</li>
+                    </ul>
         
                     <div class="flex justify-between items-center">
                         
     
-                        <div class="fav-ico">
+                        <div class="fav-ico hover:text-primary">
                             @if(wishlistItems().includes(detailsProduct._id)){
-                                <i class="fa-solid fa-heart text-[29px] cursor-pointer text-red-600" (click)="removeProductWishList(detailsProduct._id)"></i>
+                                <i class="fa-solid fa-heart  cursor-pointer text-red-600" (click)="removeProductWishList(detailsProduct._id)"></i><span class="ps-3">Remove from wishlist</span>
                             }@else{
-                                <i class="fa-regular fa-heart text-[29px] cursor-pointer" (click)="addProductWishList(detailsProduct._id)"></i>
+                                <i class="fa-regular fa-heart cursor-pointer" (click)="addProductWishList(detailsProduct._id)"></i><span class="ps-3">Add to wishlist</span>
     
                             }
+                            
                         </div>
     
 
