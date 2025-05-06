@@ -68,14 +68,14 @@
                         <li class="text-[#0068c8] font-medium text-[15px] leading-[18px] pt-5">Any complain or suggestion, please contact us.</li>
                     </ul>
         
-                    <div class="flex justify-between items-center">
+                    <div class="flex justify-center items-center gap-4 w-full">
                         
-    
+                        <button (click)="addCartItem(detailsProduct._id)" class="btn-main my-5 w-full  mx-auto block ">+ Add to cart</button>
                         <div class="fav-ico hover:text-primary">
                             @if(wishlistItems().includes(detailsProduct._id)){
-                                <i class="fa-solid fa-heart  cursor-pointer text-red-600" (click)="removeProductWishList(detailsProduct._id)"></i><span class="ps-3">Remove from wishlist</span>
+                                <i class="fa-solid fa-heart text-[30px] cursor-pointer text-red-600" (click)="removeProductWishList(detailsProduct._id)"></i>
                             }@else{
-                                <i class="fa-regular fa-heart cursor-pointer" (click)="addProductWishList(detailsProduct._id)"></i><span class="ps-3">Add to wishlist</span>
+                                <i class="fa-regular fa-heart text-[30px] cursor-pointer" (click)="addProductWishList(detailsProduct._id)"></i>
     
                             }
                             
@@ -84,7 +84,7 @@
 
                     </div>
         
-                    <button (click)="addCartItem(detailsProduct._id)" class="btn-main my-5 w-full  mx-auto block ">+ Add to cart</button>
+                    
         
                 
                 

@@ -272,7 +272,7 @@
 
             @for (product of products.slice(0,8)|search : searchText; track product._id) {
             
-                <div class="relative group border border-transparent shadow-sm hover:border-primary rounded-lg p-4 hover:shadow-lg transition-all duration-200 ease-linear bg-white">
+                <div  [routerLink]="['/details', product._id]" class="relative group border border-transparent shadow-sm hover:border-primary rounded-lg p-4 hover:shadow-lg transition-all duration-200 ease-linear bg-white">
                     <div >
                         <div class="img">
                             <img [src]="product.imageCover" [alt]="product.title">

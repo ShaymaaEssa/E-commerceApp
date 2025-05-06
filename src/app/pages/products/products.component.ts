@@ -10,6 +10,7 @@ import { SearchPipe } from '../../shared/pipes/search.pipe';
 import { FormsModule } from '@angular/forms';
 import { WishlistService } from '../../core/services/wishlist/wishlist.service';
 import { Subject } from 'rxjs';
+import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'app-products',
@@ -49,6 +50,14 @@ export class ProductsComponent implements OnInit {
       }
       
     }
+
+    // ngAfterViewChecked(): void {
+    //   //Called after every check of the component's view. Applies to components only.
+    //   //Add 'implements AfterViewChecked' to the class.
+    //   if (typeof initFlowbite === 'function') {
+    //   initFlowbite(); // Re-initialize Flowbite
+    //   }
+    // }
 
     getProductsData(){
       this.productsService.getAllProducts().subscribe({
